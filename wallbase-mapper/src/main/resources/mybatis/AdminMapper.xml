@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.AdminDao">
+
+
+    <resultMap id="adminEntity" type="tv.wallbase.gateway.domain.AdminEntity">
+        <id property="id" column="id"></id>
+
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="email" column="email"></result>
+        <result property="name" column="name"></result>
+        <result property="department" column="department"></result>
+        <result property="accountEnabled" column="account_enabled"></result>
+        <result property="accountLocked" column="account_locked"></result>
+        <result property="accountExpired" column="account_expired"></result>
+        <result property="loginFailureCount" column="login_failure_count"></result>
+        <result property="lockedDate" column="locked_date"></result>
+        <result property="loginDate" column="login_date"></result>
+        <result property="loginIp" column="login_ip"></result>
+
+        <result property="createdTime" column="created_time"></result>
+        <result property="modifiedTime" column="modified_time"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="tv.wallbase.gateway.domain.AdminEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_admin
+        (
+        username,password,email,name,department,account_enabled,account_locked,account_expired,login_failure_count,created_time,modified_time
+        )
+        VALUES
+        (
+          #{username},#{password},#{email},#{name},#{department},#{accountEnabled},#{accountLocked},#{accountExpired},#{loginFailureCount},now(),now()
+        )
+    </insert>
+
+    <select id="getAdminByUsername" resultMap="adminEntity">
+        SELECT
+        id,username,password,email,name,department,account_enabled,account_locked,account_expired,login_failure_count,locked_date,login_date,login_ip,created_time,modified_time
+        FROM
+        tb_admin
+        WHERE
+        username=#{username}
+        LIMIT 1
+    </select>
+
+
+</mapper>

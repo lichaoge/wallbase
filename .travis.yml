@@ -1,0 +1,25 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+  - $HOME/.m2
+
+script:
+  - mvn clean install -Dmaven.test.skip=true
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  api_key: $access_tokens
+  file:
+    - "book-web/target/book-web.war"
+    - "book-tractor/target/book-tractor-1.0-SNAPSHOT.war"
+    - "README.md"
+  skip_cleanup: true
+  on:
+     tags: true
+     branch: master

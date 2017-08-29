@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.test.generator.mapper.WallpaperMapper">
+  <resultMap id="BaseResultMap" type="tv.wallbase.test.generator.model.Wallpaper">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="purity" jdbcType="VARCHAR" property="purity" />
+    <result column="size" jdbcType="DOUBLE" property="size" />
+    <result column="views_count" jdbcType="INTEGER" property="viewsCount" />
+    <result column="favorites_count" jdbcType="INTEGER" property="favoritesCount" />
+    <result column="thumb_url" jdbcType="VARCHAR" property="thumbUrl" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, category_id, purity, size, views_count, favorites_count, thumb_url, image_url, 
+    user_id, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_wallpaper
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_wallpaper
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    insert into tb_wallpaper (id, category_id, purity, 
+      size, views_count, favorites_count, 
+      thumb_url, image_url, user_id, 
+      status, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{purity,jdbcType=VARCHAR}, 
+      #{size,jdbcType=DOUBLE}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER}, 
+      #{thumbUrl,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    insert into tb_wallpaper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="purity != null">
+        purity,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="viewsCount != null">
+        views_count,
+      </if>
+      <if test="favoritesCount != null">
+        favorites_count,
+      </if>
+      <if test="thumbUrl != null">
+        thumb_url,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purity != null">
+        #{purity,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="viewsCount != null">
+        #{viewsCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoritesCount != null">
+        #{favoritesCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumbUrl != null">
+        #{thumbUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    update tb_wallpaper
+    <set>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purity != null">
+        purity = #{purity,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="viewsCount != null">
+        views_count = #{viewsCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoritesCount != null">
+        favorites_count = #{favoritesCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumbUrl != null">
+        thumb_url = #{thumbUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    update tb_wallpaper
+    set category_id = #{categoryId,jdbcType=INTEGER},
+      purity = #{purity,jdbcType=VARCHAR},
+      size = #{size,jdbcType=DOUBLE},
+      views_count = #{viewsCount,jdbcType=INTEGER},
+      favorites_count = #{favoritesCount,jdbcType=INTEGER},
+      thumb_url = #{thumbUrl,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="tv.wallbase.test.generator.model.Wallpaper">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="purity" jdbcType="VARCHAR" property="purity" />
+    <result column="size" jdbcType="DOUBLE" property="size" />
+    <result column="views_count" jdbcType="INTEGER" property="viewsCount" />
+    <result column="favorites_count" jdbcType="INTEGER" property="favoritesCount" />
+    <result column="thumb_url" jdbcType="VARCHAR" property="thumbUrl" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, category_id, purity, size, views_count, favorites_count, thumb_url, image_url, 
+    user_id, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_wallpaper
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_wallpaper
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    insert into tb_wallpaper (id, category_id, purity, 
+      size, views_count, favorites_count, 
+      thumb_url, image_url, user_id, 
+      status, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{purity,jdbcType=VARCHAR}, 
+      #{size,jdbcType=DOUBLE}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER}, 
+      #{thumbUrl,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    insert into tb_wallpaper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="purity != null">
+        purity,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="viewsCount != null">
+        views_count,
+      </if>
+      <if test="favoritesCount != null">
+        favorites_count,
+      </if>
+      <if test="thumbUrl != null">
+        thumb_url,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purity != null">
+        #{purity,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="viewsCount != null">
+        #{viewsCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoritesCount != null">
+        #{favoritesCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumbUrl != null">
+        #{thumbUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    update tb_wallpaper
+    <set>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purity != null">
+        purity = #{purity,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="viewsCount != null">
+        views_count = #{viewsCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoritesCount != null">
+        favorites_count = #{favoritesCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumbUrl != null">
+        thumb_url = #{thumbUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tv.wallbase.test.generator.model.Wallpaper">
+    update tb_wallpaper
+    set category_id = #{categoryId,jdbcType=INTEGER},
+      purity = #{purity,jdbcType=VARCHAR},
+      size = #{size,jdbcType=DOUBLE},
+      views_count = #{viewsCount,jdbcType=INTEGER},
+      favorites_count = #{favoritesCount,jdbcType=INTEGER},
+      thumb_url = #{thumbUrl,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

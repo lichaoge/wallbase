@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.WallpaperMapper">
+
+    <sql id="Base_Column_List">
+    id, category_id, purity, size, views_count, favorites_count, thumb_url, image_url,
+    user_id, status, create_time, update_time
+  </sql>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="WallpaperPo">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_wallpaper
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="WallpaperPo">
+    insert into tb_wallpaper
+     (
+      id, category_id, purity,
+      size, views_count, favorites_count, 
+      thumb_url, image_url, user_id,
+      status,
+       create_time, update_time
+      )
+    values (
+     #{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{purity,jdbcType=VARCHAR},
+      #{size,jdbcType=DOUBLE}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER}, 
+      #{thumbUrl,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
+      #{status,jdbcType=VARCHAR},
+      now(), now()
+      )
+  </insert>
+    <update id="update" parameterType="WallpaperPo">
+        update tb_wallpaper
+        <set>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="purity != null">
+                purity = #{purity,jdbcType=VARCHAR},
+            </if>
+            <if test="size != null">
+                size = #{size,jdbcType=DOUBLE},
+            </if>
+            <if test="viewsCount != null">
+                views_count = #{viewsCount,jdbcType=INTEGER},
+            </if>
+            <if test="favoritesCount != null">
+                favorites_count = #{favoritesCount,jdbcType=INTEGER},
+            </if>
+            <if test="thumbUrl != null">
+                thumb_url = #{thumbUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="imageUrl != null">
+                image_url = #{imageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+
+    <!--分页使用 findByPage-->
+    <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper" parameterType="Pageable">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_wallpaper
+        <if test="filters!=null and filters.size>0">
+            <where>
+                <foreach collection="filters" index="index" item="filter" separator=" ">
+                    <choose>
+                        <when test="filter.operator.key=='in'">
+                            ${filter.property} ${filter.operator.key}
+                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator="," close=")">
+                                ${value}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            <foreach collection="filters" index="index" item="filter" open="" separator="and" close="">
+                                ${filter.property} ${filter.operator.key} #{filter.value}
+                            </foreach>
+                        </otherwise>
+                    </choose>
+                </foreach>
+            </where>
+        </if>
+        <if test="sorts!=null and sorts.size>0">
+            <foreach collection="sorts" item="sort" open="order by " separator="," close=" ">
+                ${sort.property} ${sort.direction}
+            </foreach>
+        </if>
+        LIMIT ${pageNow},${pageSize}
+    </select>
+
+    <select id="countByPage" resultType="long" parameterType="Pageable">
+        SELECT
+        count(id)
+        FROM tb_wallpaper
+        <if test="filters!=null and filters.size>0">
+            <where>
+                <foreach collection="filters" index="index" item="filter" separator=" ">
+                    <choose>
+                        <when test="filter.operator.key=='in'">
+                            ${filter.property} ${filter.operator.key}
+                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator=","
+                                     close=")">
+                                ${value}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            <foreach collection="filters" index="index" item="filter" open="" separator="and" close="">
+                                ${filter.property} ${filter.operator.key} #{filter.value}
+                            </foreach>
+                        </otherwise>
+                    </choose>
+                </foreach>
+            </where>
+        </if>
+    </select>
+    <!--//END 分页使用 findByPage-->
+</mapper>

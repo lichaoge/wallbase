@@ -1,0 +1,10 @@
+*.idea
+*.iml
+wallbase-common/target/
+wallbase-gateway/target/
+wallbase-mapper/target/
+wallbase-service/target/
+wallbase-tractor/target/
+wallbase-web-manager/target/
+wallbase-web/target/
+wallbase-web-manager/src/main/webapp/assets/**
