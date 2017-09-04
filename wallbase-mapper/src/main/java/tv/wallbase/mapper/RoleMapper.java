@@ -1,6 +1,7 @@
 package tv.wallbase.mapper;
 
 
+import org.apache.ibatis.annotations.Mapper;
 import tv.wallbase.gateway.domain.RoleEntity;
 
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/10/24.
  */
-public interface RoleDao {
+@Mapper
+public interface RoleMapper {
 
     /**
      * 保存

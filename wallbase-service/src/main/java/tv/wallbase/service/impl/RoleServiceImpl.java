@@ -2,7 +2,7 @@ package tv.wallbase.service.impl;
 
 import tv.wallbase.mapper.AdminRoleDao;
 import tv.wallbase.mapper.AuthorityDao;
-import tv.wallbase.mapper.RoleDao;
+import tv.wallbase.mapper.RoleMapper;
 import tv.wallbase.gateway.domain.RoleEntity;
 import tv.wallbase.gateway.model.Role;
 import tv.wallbase.gateway.service.RoleService;
@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
     private AuthorityDao authorityDao;
 
     @Resource
-    private RoleDao roleDao;
+    private RoleMapper roleDao;
 
     @Resource
     private AdminRoleDao adminRoleDao;

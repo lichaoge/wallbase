@@ -29,24 +29,24 @@ public class EmailServiceImpl implements EmailService {
     private VelocityEngine velocityEngine;
 
 
-    public void send(String toMail, String subject, String templateName, Map<String, Object> data)
-            throws MessagingException, UnsupportedEncodingException {
+    public void send(String toMail, String subject, String templateName, Map<String, Object> data) {
 
         Assert.hasText(toMail);
         Assert.hasText(subject);
         Assert.hasText(templateName);
 
         String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, templateName, "UTF-8", data);
-
-        MimeMessage mailMessage = mailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage, false, "utf-8");
-
-        messageHelper.setFrom(MimeUtility.encodeWord("系统邮件") + " <wang.kun@zhongfl.com>");
-        messageHelper.setTo(toMail);
-        messageHelper.setSubject(subject);
-        messageHelper.setText(text, true);
-
-        mailSender.send(mailMessage);
+        try {
+            MimeMessage mailMessage = mailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = messageHelper = new MimeMessageHelper(mailMessage, false, "utf-8");
+            messageHelper.setFrom(MimeUtility.encodeWord("系统邮件") + " <wang.kun@zhongfl.com>");
+            messageHelper.setTo(toMail);
+            messageHelper.setSubject(subject);
+            messageHelper.setText(text, true);
+            mailSender.send(mailMessage);
+        } catch (MessagingException | UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
     }
 
 
