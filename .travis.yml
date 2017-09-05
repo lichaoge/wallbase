@@ -16,8 +16,8 @@ deploy:
   provider: releases
   api_key: $access_tokens
   file:
-    - "book-web/target/book-web.war"
-    - "book-tractor/target/book-tractor-1.0-SNAPSHOT.war"
+    - "wallbase-web/target/book-web.war"
+    - "wallbase-tractor/target/book-tractor-1.0-SNAPSHOT.war"
     - "README.md"
   skip_cleanup: true
   on:
