@@ -1,4 +1,4 @@
-package tv.wallbase.manager.controller;
+package tv.wallbase.controller.admin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

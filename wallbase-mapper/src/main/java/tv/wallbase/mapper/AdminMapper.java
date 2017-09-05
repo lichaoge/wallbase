@@ -1,12 +1,14 @@
 package tv.wallbase.mapper;
 
 
+import org.apache.ibatis.annotations.Mapper;
 import tv.wallbase.gateway.domain.AdminEntity;
 
 /**
  * Created by Administrator on 2016/10/22.
  */
-public interface AdminDao {
+@Mapper
+public interface AdminMapper {
 
     /**
      * 保存到数据库

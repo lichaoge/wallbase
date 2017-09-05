@@ -2,7 +2,7 @@ package tv.wallbase.service.impl;
 
 import javax.annotation.Resource;
 
-import tv.wallbase.mapper.AdminDao;
+import tv.wallbase.mapper.AdminMapper;
 import tv.wallbase.gateway.domain.AdminEntity;
 import tv.wallbase.gateway.model.Admin;
 import tv.wallbase.gateway.service.AdminService;
@@ -28,19 +28,19 @@ public class AdminServiceImpl implements AdminService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
-    private AdminDao adminDao;
+    private AdminMapper adminMapper;
 
     @Resource
     private RoleService roleService;
 
     @Override
     public boolean isExistByUsername(String username) {
-        return adminDao.isExistByUsername(username);
+        return adminMapper.isExistByUsername(username);
     }
 
     @Override
     public Admin getAdminByUsername(String username) {
-        AdminEntity entity = adminDao.getAdminByUsername(username);
+        AdminEntity entity = adminMapper.getAdminByUsername(username);
 
         Admin admin = new Admin();
         BeanUtils.copyProperties(entity, admin);

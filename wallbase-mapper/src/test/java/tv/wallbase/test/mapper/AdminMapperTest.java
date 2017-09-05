@@ -1,7 +1,7 @@
 package tv.wallbase.test.mapper;
 
 import tv.wallbase.gateway.domain.AdminEntity;
-import tv.wallbase.mapper.AdminDao;
+import tv.wallbase.mapper.AdminMapper;
 import tv.wallbase.test.TestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,12 +12,12 @@ import javax.annotation.Resource;
 /**
  * Created by Administrator on 2016/10/22.
  */
-public class AdminDaoTest extends TestBase {
+public class AdminMapperTest extends TestBase {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AdminDaoTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminMapperTest.class);
 
     @Resource
-    private AdminDao adminDao;
+    private AdminMapper adminDao;
 
     //@Test
     public void insert() {

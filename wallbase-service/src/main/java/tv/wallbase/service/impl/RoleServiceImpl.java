@@ -1,7 +1,7 @@
 package tv.wallbase.service.impl;
 
-import tv.wallbase.mapper.AdminRoleDao;
-import tv.wallbase.mapper.AuthorityDao;
+import tv.wallbase.mapper.AdminRoleMapper;
+import tv.wallbase.mapper.AuthorityMapper;
 import tv.wallbase.mapper.RoleMapper;
 import tv.wallbase.gateway.domain.RoleEntity;
 import tv.wallbase.gateway.model.Role;
@@ -14,29 +14,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 角色管理
  * Created by Administrator on 2016/10/24.
  */
 @Service
 public class RoleServiceImpl implements RoleService {
 
     @Resource
-    private AuthorityDao authorityDao;
+    private AuthorityMapper authorityMapper;
 
     @Resource
-    private RoleMapper roleDao;
+    private RoleMapper roleMapper;
 
     @Resource
-    private AdminRoleDao adminRoleDao;
+    private AdminRoleMapper adminRoleMapper;
 
     @Override
     public List<String> findAuthority(List<Long> roleIds) {
-        List<String> result = authorityDao.findAuthorityByRole(roleIds);
+        List<String> result = authorityMapper.findAuthorityByRole(roleIds);
         return result;
     }
 
     @Override
     public List<Role> findRolesByAdmin(long id) {
-        List<RoleEntity> list = roleDao.findRolesByAdmin(id);
+        List<RoleEntity> list = roleMapper.findRolesByAdmin(id);
 
         List<Role> result = new ArrayList<>(list.size());
         for (RoleEntity entity : list) {
@@ -49,6 +50,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<Long> findRoleIdsByAdmin(long id) {
-        return adminRoleDao.findRoleIdsByAdmin(id);
+        return adminRoleMapper.findRoleIdsByAdmin(id);
     }
 }

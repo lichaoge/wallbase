@@ -1,7 +1,7 @@
 package tv.wallbase.test.mapper;
 
 import tv.wallbase.gateway.domain.AuthorityEntity;
-import tv.wallbase.mapper.AuthorityDao;
+import tv.wallbase.mapper.AuthorityMapper;
 import tv.wallbase.test.TestBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +13,12 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/10/24.
  */
-public class AuthorityDaoTest extends TestBase {
+public class AuthorityMapperTest extends TestBase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Resource
-    private AuthorityDao authorityDao;
+    private AuthorityMapper authorityMapper;
 
     //@Test
     public void insert() {
@@ -26,7 +26,7 @@ public class AuthorityDaoTest extends TestBase {
         authority.setRoleId(1);
         authority.setAuthority("ROLE_USER");
         authority.setCreatorId(1);
-        authorityDao.insert(authority);
+        authorityMapper.insert(authority);
     }
 
    // @Test
@@ -37,7 +37,7 @@ public class AuthorityDaoTest extends TestBase {
         ins.add(1);
         //ins.add(2);
 
-        List<String> list = authorityDao.findAuthorityByRole(ins);
+        List<String> list = authorityMapper.findAuthorityByRole(ins);
 
         LOGGER.info("size {}", list.size());
     }

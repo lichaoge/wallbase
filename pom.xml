@@ -23,17 +23,12 @@
     <modules>
         <module>wallbase-common</module>
         <module>wallbase-gateway</module>
-
         <module>wallbase-mapper</module>
         <module>wallbase-service</module>
-        <module>wallbase-tractor</module>
-
-        <module>wallbase-web-manager</module>
         <module>wallbase-web</module>
     </modules>
 
     <dependencies>
-        <!-- slf4j here -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>

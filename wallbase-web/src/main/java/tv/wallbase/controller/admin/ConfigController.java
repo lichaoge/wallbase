@@ -1,31 +1,30 @@
-package tv.wallbase.manager.controller;
+package tv.wallbase.controller.admin;
 
+import tv.wallbase.gateway.service.ConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
+
 /**
- * Created by Administrator on 2016/10/25.
+ * 测试dubbo服务
+ * Created by Administrator on 2016/10/22.
  */
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/config")
+public class ConfigController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String displayList() {
-
-
-        return "admin/list";
-    }
+    @Resource
+    private ConfigService configService;
 
     @RequestMapping(value = "details", method = RequestMethod.GET)
     public String displayDetails() {
-
-
-        return "admin/details";
+        logger.info("displayLogin {}", configService.get());
+        return "config/details";
     }
 }

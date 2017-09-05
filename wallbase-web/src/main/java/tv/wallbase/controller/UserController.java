@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
+public class UserController {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
