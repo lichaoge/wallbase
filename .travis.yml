@@ -17,7 +17,6 @@ deploy:
   api_key: $access_tokens
   file:
     - "wallbase-web/target/wallbase-web-1.0-SNAPSHOT.jar"
-    - "wallbase-tractor/target/wallbase-tractor-1.0-SNAPSHOT.jar"
     - "README.md"
   skip_cleanup: true
   on:
