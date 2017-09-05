@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/lockbur/wallbase.svg?branch=master)](https://travis-ci.org/lockbur/wallbase)
-
+[![Build Status](https://travis-ci.org/wallbase/wallbase.svg?branch=master)](https://travis-ci.org/wallbase/wallbase)
 # databook
 ###### 主要使用maven 和spring spring mvc dubbo mybatis技术实现分模块开发，注册中心使用zookeeper-3.4.6 这个版本.
 > 构建顺序
