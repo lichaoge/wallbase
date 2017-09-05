@@ -19,13 +19,13 @@ public class ConfigServiceTest extends TestBase {
     @Resource
     private ConfigService configService;
 
-    @Test
+   // @Test
     public void get() {
         String config = configService.get();
         logger.info("config {}", config);
     }
 
-    @Test
+   // @Test
     public void getSystemConfig() {
         SystemConfig config = configService.getSystemConfig();
         logger.info("config ###");

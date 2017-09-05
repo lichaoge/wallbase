@@ -18,7 +18,7 @@ public class SendMailTest extends TestBase {
     private EmailService emailService;
 
 
-    @Test
+    //@Test
     public void sendEmail() throws Exception {
         emailService.send("845885222@qq.com", "测试", "user_register_mail.vm", new HashedMap());
         LOGGER.info("########## {}");

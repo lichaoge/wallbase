@@ -28,6 +28,7 @@ server:
   context-path: /
   compression:
     enabled: true
+  port: 9090
 
 logback:
   access:

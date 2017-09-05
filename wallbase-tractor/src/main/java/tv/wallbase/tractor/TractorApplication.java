@@ -9,14 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by wangkun23 on 2017/9/4.
  */
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class TractorApplication implements CommandLineRunner {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(TractorApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-//        System.out.println(this.cityDao.selectCityById(1));
-//        System.out.println(this.hotelMapper.selectByCityId(1));
+
     }
 }

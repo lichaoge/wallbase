@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>tv.wallbase</groupId>
         <artifactId>Parent</artifactId>
@@ -9,59 +10,40 @@
 
     <groupId>tv.wallbase</groupId>
     <artifactId>wallbase-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>wallbase-web</name>
 
     <properties>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>tv.wallbase</groupId>
-            <artifactId>wallbase-gateway</artifactId>
-        </dependency>
-        <!--如果是dubbo服务，不需要依赖service,这里是为了测试方便-->
-        <dependency>
-            <groupId>tv.wallbase</groupId>
-            <artifactId>wallbase-service</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>tv.wallbase</groupId>-->
+        <!--<artifactId>wallbase-gateway</artifactId>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;如果是dubbo服务，不需要依赖service,这里是为了测试方便&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>tv.wallbase</groupId>-->
+        <!--<artifactId>wallbase-service</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>javax</groupId>-->
+        <!--<artifactId>javaee-web-api</artifactId>-->
+        <!--<version>7.0</version>-->
+        <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
-        <finalName>book-web</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -70,20 +52,8 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.14.v20161028</version>
-                <configuration>
-                    <stopKey>fookey</stopKey>
-                    <stopPort>7986</stopPort>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <httpConnector>
-                        <port>8086</port>
-                    </httpConnector>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                    </webAppConfig>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

@@ -24,7 +24,7 @@ public class WallpaperMapperTest extends TestBase {
     private WallpaperMapper wallpaperMapper;
 
 
-    @Test
+    //@Test
     public void insert() {
         WallpaperPo entity = new WallpaperPo();
 
@@ -42,7 +42,7 @@ public class WallpaperMapperTest extends TestBase {
     }
 
 
-    @Test
+    //@Test
     public void findByPage() {
         Pageable pageable = new Pageable();
         List<Wallpaper> list = wallpaperMapper.findByPage(pageable);
