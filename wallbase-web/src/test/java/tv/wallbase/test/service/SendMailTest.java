@@ -1,10 +1,10 @@
-package tv.wallbase.test;
+package tv.wallbase.test.service;
 
 import tv.wallbase.gateway.service.EmailService;
 import org.apache.commons.collections.map.HashedMap;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tv.wallbase.test.TestBase;
 
 import javax.annotation.Resource;
 

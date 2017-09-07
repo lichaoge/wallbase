@@ -1,22 +1,27 @@
 package tv.wallbase.test.mapper;
 
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 import tv.wallbase.common.rest.Pageable;
 import tv.wallbase.gateway.domain.WallpaperPo;
 import tv.wallbase.gateway.enums.Purity;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.mapper.WallpaperMapper;
-import tv.wallbase.test.TestBase;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+
 import java.util.List;
 
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 /**
  * Created by wangkun23 on 2017/7/30.
  */
-public class WallpaperMapperTest extends TestBase {
+@RunWith(SpringRunner.class)
+@MybatisTest
+public class WallpaperMapperTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -24,7 +29,7 @@ public class WallpaperMapperTest extends TestBase {
     private WallpaperMapper wallpaperMapper;
 
 
-    //@Test
+    @Test
     public void insert() {
         WallpaperPo entity = new WallpaperPo();
 

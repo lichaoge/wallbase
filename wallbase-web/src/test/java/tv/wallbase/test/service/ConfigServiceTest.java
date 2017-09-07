@@ -3,7 +3,6 @@ package tv.wallbase.test.service;
 import tv.wallbase.common.system.SystemConfig;
 import tv.wallbase.gateway.service.ConfigService;
 import tv.wallbase.test.TestBase;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
