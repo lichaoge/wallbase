@@ -1,41 +1,51 @@
 package tv.wallbase.service.impl;
 
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import tv.wallbase.gateway.service.EmailService;
-import org.apache.velocity.app.VelocityEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 @Service
 public class EmailServiceImpl implements EmailService {
+    final Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
 
-    final Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpl.class);
+    @Autowired
+    private JavaMailSender mailSender;
 
-    @Resource
-    private JavaMailSenderImpl mailSender;
+    @Autowired
+    private FreeMarkerConfigurer freeMarkerConfigurer;
 
-    @Resource
-    private VelocityEngine velocityEngine;
+    @Value(value = "${mail.sending.enabled}")
+    private Boolean sendingEnabled;
 
-
-    public void send(String toMail, String subject, String templateName, Map<String, Object> data) {
-
-        Assert.hasText(toMail);
-        Assert.hasText(subject);
-        Assert.hasText(templateName);
-
-        String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, templateName, "UTF-8", data);
+    public void send(String toMail, String subject, final String templateName, Map<String, Object> params) {
+        Assert.hasText(toMail, "toMail must not be null, empty, or blank");
+        Assert.hasText(subject, "subject must not be null, empty, or blank");
+        Assert.hasText(templateName, "templateName must not be null, empty, or blank");
+        String text = "";
+        try {
+            Template freemarkerTemplate = freeMarkerConfigurer.getConfiguration().getTemplate(templateName);
+            text = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, params);
+        } catch (TemplateException | IOException e) {
+            logger.error(e.getMessage());
+        }
         try {
             MimeMessage mailMessage = mailSender.createMimeMessage();
             MimeMessageHelper messageHelper = messageHelper = new MimeMessageHelper(mailMessage, false, "utf-8");
@@ -45,42 +55,7 @@ public class EmailServiceImpl implements EmailService {
             messageHelper.setText(text, true);
             mailSender.send(mailMessage);
         } catch (MessagingException | UnsupportedEncodingException ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage());
         }
     }
-
-
-    public void send(String smtpFromMail, String smtpHost, Integer smtpPort, String smtpUsername, String smtpPassword, String toMail, String subject, String templateName, Map<String, Object> data) {
-
-        Assert.hasText(smtpFromMail);
-        Assert.hasText(smtpHost);
-        Assert.notNull(smtpPort);
-        Assert.hasText(smtpUsername);
-        Assert.hasText(smtpPassword);
-        Assert.hasText(toMail);
-        Assert.hasText(subject);
-        Assert.hasText(templateName);
-
-        //读取邮件模板
-        String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, templateName, "UTF-8", data);
-
-        mailSender.setHost(smtpHost);
-        mailSender.setPort(smtpPort);
-        mailSender.setUsername(smtpUsername);
-        mailSender.setPassword(smtpPassword);
-        try {
-            MimeMessage mailMessage = mailSender.createMimeMessage();
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage, false, "utf-8");
-
-            messageHelper.setFrom(MimeUtility.encodeWord("系统邮件") + " <wang.kun@zhongfl.com>");
-            messageHelper.setTo(toMail);
-            messageHelper.setSubject(subject);
-            messageHelper.setText(text, true);
-
-            mailSender.send(mailMessage);
-        } catch (MessagingException | UnsupportedEncodingException ex) {
-            LOGGER.error("send email error {}", ex);
-        }
-    }
-
 }
