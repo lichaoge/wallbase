@@ -1,6 +1,4 @@
 package tv.wallbase.gateway.model;
-
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
