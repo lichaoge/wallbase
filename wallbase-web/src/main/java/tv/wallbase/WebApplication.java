@@ -27,10 +27,11 @@ public class WebApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(WebApplication.class, args);
 
+
         String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);
-        for (String beanName : beanNames) {
-            logger.info("bean {}", beanName);
-        }
+//        for (String beanName : beanNames) {
+//            logger.info("bean {}", beanName);
+//        }
     }
 }

@@ -12,7 +12,7 @@ import tv.wallbase.settings.SystemSettings;
  *
  * @author youyou
  */
-@Component("appBean")
+@Component
 public class ApplicationBean {
 
     @Autowired

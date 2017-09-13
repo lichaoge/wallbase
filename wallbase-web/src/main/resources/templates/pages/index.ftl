@@ -23,6 +23,7 @@
 <body>
 <section class="vbox">
     ${version}
+    ${appBean.assetsUrl}
 </section>
 </body>
 <script src="/plugins/jquery/jquery-2.2.4.min.js"></script>

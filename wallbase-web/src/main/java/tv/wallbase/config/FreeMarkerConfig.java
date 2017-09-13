@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import tv.wallbase.web.ApplicationBean;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,9 @@ public class FreeMarkerConfig extends FreeMarkerAutoConfiguration.FreeMarkerWebC
     @Value("${version}")
     private String version;
 
+    @Resource
+    private ApplicationBean applicationBean;
+
     /**
      * spring freemarker 默认配置
      *
@@ -43,6 +48,7 @@ public class FreeMarkerConfig extends FreeMarkerAutoConfiguration.FreeMarkerWebC
 
         Map<String, Object> sharedVariables = new HashMap<>();
         sharedVariables.put("version", version);
+        sharedVariables.put("appBean", applicationBean);
         configurer.setFreemarkerVariables(sharedVariables);
 
         return configurer;
