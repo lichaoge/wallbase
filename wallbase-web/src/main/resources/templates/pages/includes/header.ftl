@@ -1,36 +1,52 @@
-<#import "/spring.ftl" as s />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="description" content="Lockbur旨在为设计人员提供更高质量壁纸或者桌面壁纸,同时也提供原画设计作品分享!"/>
-<meta name="keywords"
-      content="高清壁纸,壁纸,高清背景,背景,原画,桌面壁纸,最靠谱的图片分享网站,lockbur,lockbur.com,www.lockbur.com,wallbase,wallhaven,best wallpapers,best wallpaper site,iphone wallpaper,android wallpaper,mobile wallpaper,free wallpaper hd,backgrounds,desktop wallpaper,widescreen"/>
-<#if appBean.developMode>
-<!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
-<link rel="stylesheet" href="<@s.url 'css/bootstrap.min.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'plugins/vegas/vegas.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'css/animate.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'css/font-awesome.min.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'css/simple-line-icons.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'css/font.css'/>" type="text/css"/>
-<link rel="stylesheet" href="<@s.url 'css/app.css'/>" type="text/css"/>
-<#else>
-<!--生产模式 使用css和常用js直接走nginx-->
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="${appBean.assetsUrl}/plugins/vegas/vegas.css" type="text/css"/>
-<link rel="stylesheet" href="${appBean.assetsUrl}/css/animate.css" type="text/css"/>
-<link rel="stylesheet" href="${appBean.assetsUrl}/css/font-awesome.min.css" type="text/css"/>
-<link rel="stylesheet" href="${appBean.assetsUrl}/css/simple-line-icons.css" type="text/css"/>
-<link rel="stylesheet" href="${appBean.assetsUrl}/css/font.css" type="text/css"/>
-
-<link rel="stylesheet" href="<@s.url '/'/>build-${appBean.gruntVersion}/css/app.min.css" type="text/css"/>
-</#if>
-
-<!--[if lt IE 9]>
-<script src="${appBean.assetsUrl}/plugins/ie/html5shiv.js"></script>
-<script src="${appBean.assetsUrl}/plugins/ie/respond.min.js"></script>
-<script src="${appBean.assetsUrl}/plugins/ie/excanvas.js"></script>
-<![endif]-->
-<link rel="shortcut icon" href="<@s.url '/favicon.ico'/>"/>
-<script>
-    var CC = {};
-    CC.assets_url = "${appBean.assetsUrl}/";
-</script>
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">导航隐藏</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="/images/logo.png">
+                <strong class="text-white">LockBur</strong>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="discover" href="/top"  title="发现">
+                            <i class="icon icon-disc"></i>
+                            <span> 发现</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="latest" href="/latest">
+                            <i class="fa fa-lg fa-clock-o"></i>
+                            <span> 最新</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="random" href="/random">
+                            <i class="fa fa-lg fa-random"></i>
+                            <span> 随机</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="upload" href="http://alpha.wallhaven.cc/upload">
+                            <i class="fa fa-lg fa-upload"></i>
+                            <span> 上传</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/search" class="search">
+                            <i class="fa fa-lg fa-search"></i>
+                            <span> 搜索</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
