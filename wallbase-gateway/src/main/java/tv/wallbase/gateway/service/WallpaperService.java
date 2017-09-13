@@ -16,4 +16,12 @@ public interface WallpaperService {
      * @return
      */
     public Page<Wallpaper> findByPage(Pageable pageable);
+
+
+    /***
+     * 详情页面
+     * @param id
+     * @return
+     */
+    public Wallpaper findDetails(Integer id);
 }
