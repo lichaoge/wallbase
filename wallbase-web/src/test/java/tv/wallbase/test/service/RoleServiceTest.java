@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  */
 public class RoleServiceTest extends TestBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfigServiceTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RoleServiceTest.class);
 
     @Resource
     private RoleService roleService;
