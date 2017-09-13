@@ -28,8 +28,8 @@
 <script src="${appBean.assetsUrl}/plugins/ie/respond.min.js"></script>
 <script src="${appBean.assetsUrl}/plugins/ie/excanvas.js"></script>
 <![endif]-->
-<link rel="icon" type="image/x-icon" href="<@s.url 'favicon.ico'/>">
-<link rel="shortcut icon" href="<@s.url 'favicon.ico'/>"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico"/>
 <script>
     var CC = {};
     CC.assets_url = "${appBean.assetsUrl}/";
