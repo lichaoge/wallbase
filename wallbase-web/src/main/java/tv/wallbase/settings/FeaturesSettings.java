@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 @ToString
 @Configuration
-@ConfigurationProperties(prefix = "tv.config.switch")
+@ConfigurationProperties(prefix = "app.config.switch")
 public class FeaturesSettings implements Serializable {
 
     /**
@@ -26,7 +26,6 @@ public class FeaturesSettings implements Serializable {
      */
     @Setter
     @Getter
-    //@Value("${dim-privacy}")
     private boolean dimPrivacy = true;  //默认值
 
 }
