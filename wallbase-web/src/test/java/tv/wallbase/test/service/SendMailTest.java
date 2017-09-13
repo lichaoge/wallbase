@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tv.wallbase.test.TestBase;
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -18,7 +19,7 @@ public class SendMailTest extends TestBase {
 
     //@Test
     public void sendEmail() throws Exception {
-        emailService.send("845885222@qq.com", "测试", "user_register_mail.vm", new HashMap());
+        emailService.send("845885222@qq.com", "测试", "user_register_mail.vm", Collections.emptyMap());
         LOGGER.info("########## {}");
     }
 }

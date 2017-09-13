@@ -86,7 +86,10 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
+                        <li>
+                            <span class="arrow top"></span>
+                            <a href="#">Action</a>
+                        </li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
