@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="row">
+<section class="bg-black dker">
+    <div class="container">
         <div class="col-xs-6 col-sm-4 col-md-3">
             <h4>网站介绍</h4>
             <p>
@@ -44,4 +44,4 @@
             </p>
         </div>
     </div>
-</div>
+</section>
