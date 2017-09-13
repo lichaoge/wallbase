@@ -26,6 +26,7 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String displayIndex(Model model) {
+        logger.info("displayIndex");
         return "/index";
     }
 }
