@@ -6,7 +6,7 @@
 ```
 mvn spring-boot:run
 ```
-*  输入http://localhost:8080访问首页
+*  输入 http://localhost:8080 访问首页
 - jdk 1.8
 - spring-boot 1.5.6
 - mysql 5.7.19
