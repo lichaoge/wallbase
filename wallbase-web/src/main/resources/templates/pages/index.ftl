@@ -29,7 +29,7 @@
 </section>
 </body>
 <script src="/plugins/jquery/jquery-2.2.4.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="/plugins/bootstrap/bootstrap.js"></script>
 <script src="/plugins/vegas/vegas.js"></script>
 <script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
