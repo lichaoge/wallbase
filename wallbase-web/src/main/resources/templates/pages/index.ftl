@@ -9,6 +9,7 @@
     <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15"/>
     <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
 
+    <#include "includes/head.ftl"/>
     <!--百度统计-->
     <script>
         var _hmt = _hmt || [];

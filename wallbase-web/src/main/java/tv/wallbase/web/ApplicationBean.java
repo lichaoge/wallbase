@@ -26,23 +26,37 @@ public class ApplicationBean {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
+
     @Autowired
+    //配置新开发功能是否可用线上
     private SystemSettings systemSettings;
 
+    //主站路径 http://lockbur.com 默认
+    @Getter
     private String siteUrl;
 
+    //css js 资源服务器
+    @Getter
     private String assetsUrl;
 
+    @Getter
     private boolean developMode;
 
-    @Setter
     @Getter
     //设置前端node grunt package的版本号
     private String gruntVersion;
 
 
+    //@Resource
+    //private MemberService memberService;
+
+
     @PostConstruct
     public void initialize() {
+        this.siteUrl = systemSettings.getSiteUrl();
+        this.assetsUrl = systemSettings.getAssetsUrl();
+        this.developMode = systemSettings.isDevelopMode();
+
         //设置version 从grunt打包到生产使用
         ClassPathResource classPathResource = new ClassPathResource("package.json");
         try (InputStream is = classPathResource.getInputStream()) {
@@ -56,53 +70,16 @@ public class ApplicationBean {
         }
     }
 
-    //@Resource
-    //private MemberService memberService;
-
-    //@Resource
-    //private ConfigService configService;
-
 //    public Member getCurrentUser() {
 //        return memberService.getCurrent();
 //    }
-
-    /**
-     * 配置新开发功能是否可用线上
-     *
-     * @return
-     */
-    public FeaturesSettings getFeatures() {
-        return systemSettings.getFeatures();
-    }
-
-    public SystemSettings getsystemSettings() {
-        return systemSettings;
-    }
-
-    /**
-     * 主站路径 http://lockbur.com 默认
-     *
-     * @return
-     */
-    public String getSiteUrl() {
-        return systemSettings.getSiteUrl();
-    }
-
-    /**
-     * css js 资源服务器
-     *
-     * @return
-     */
-    public String getAssetsUrl() {
-        return systemSettings.getAssetsUrl();
-    }
 
     /**
      * 是否是开发者模式
      *
      * @return
      */
-    public boolean isDevelopMode() {
+    public boolean getDevelopMode() {
         return systemSettings.isDevelopMode();
     }
 
