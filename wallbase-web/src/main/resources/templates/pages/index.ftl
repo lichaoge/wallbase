@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="app">
 <head>
     <meta charset="utf-8"/>
     <title>Lockbur - 更多壁纸，更多分享</title>
@@ -24,7 +24,7 @@
 <#include "includes/header.ftl"/>
 <section class="vbox">
     <section class="w-f-md">
-        <section id="waterfall" class="container scrollable padder-lg">
+        <section id="waterfall" class="container scrollable padder-lg m-t-xl">
             <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
             <div class="row row-sm">
                 <div class="col-xs-6 col-sm-4 col-md-3">
