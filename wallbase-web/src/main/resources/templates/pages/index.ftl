@@ -11,21 +11,39 @@
 
     <#include "includes/head.ftl"/>
     <!--百度统计-->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+    <#--<script>-->
+        <#--var _hmt = _hmt || [];-->
+        <#--(function () {-->
+            <#--var hm = document.createElement("script");-->
+            <#--hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";-->
+            <#--var s = document.getElementsByTagName("script")[0];-->
+            <#--s.parentNode.insertBefore(hm, s);-->
+        <#--})();-->
+    <#--</script>-->
 </head>
 <body>
+<#include "includes/navbar.ftl"/>
 <section class="vbox">
     ${version}
     ${appBean.assetsUrl}
 </section>
 </body>
 <script src="/plugins/jquery/jquery-2.2.4.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="/plugins/vegas/vegas.js"></script>
+<script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
+<script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!-- App -->
+<script src="/js/app.plugin.js"></script>
+<script src="/js/app.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //图片延时加载  //当图片没加载完显示加载图标和默认图片
+        $("img[data-provider=lazyload]").lazyload({
+            placeholder: "/images/images300x200.jpg",
+            container: $("#waterfall")
+        });
+
+    });
+</script>
 </html>
