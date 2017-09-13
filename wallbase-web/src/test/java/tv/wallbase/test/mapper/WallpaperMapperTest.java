@@ -29,7 +29,7 @@ public class WallpaperMapperTest {
     private WallpaperMapper wallpaperMapper;
 
 
-    @Test
+    //@Test
     public void insert() {
         WallpaperPo entity = new WallpaperPo();
 

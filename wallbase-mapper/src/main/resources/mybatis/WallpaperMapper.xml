@@ -74,7 +74,8 @@
 
 
     <!--分页使用 findByPage-->
-    <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper" parameterType="Pageable">
+    <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper"
+            parameterType="tv.wallbase.common.rest.Pageable">
         SELECT
         <include refid="Base_Column_List"/>
         FROM tb_wallpaper
@@ -105,7 +106,8 @@
         LIMIT ${pageNow},${pageSize}
     </select>
 
-    <select id="countByPage" resultType="long" parameterType="Pageable">
+    <select id="countByPage" resultType="long"
+            parameterType="tv.wallbase.common.rest.Pageable">
         SELECT
         count(id)
         FROM tb_wallpaper
