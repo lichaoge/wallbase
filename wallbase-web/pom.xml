@@ -95,8 +95,17 @@
                 <excludes>
                     <exclude>app/**</exclude>
                     <exclude>Gruntfile.js</exclude>
+                    <exclude>static/fonts/**</exclude>
                 </excludes>
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <!--如果是用filtering true，那么字体文件会被破坏-->
+                    <include>static/fonts/**</include>
+                </includes>
             </resource>
         </resources>
 
