@@ -1,5 +1,5 @@
 <!-- .aside -->
-<aside class="bg-light aside" id="nav">
+<aside class="bg-white-only aside r-3x">
     <section class="vbox">
         <section>
             <div data-height="auto"
@@ -8,8 +8,8 @@
                  data-railOpacity="0.2">
                 <!-- nav -->
                 <nav class="nav-primary hidden-xs">
-                    <ul class="nav clearfix">
-                        <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                    <ul class="nav">
+                        <li class="hidden-nav-xs padder m-t m-b-sm text-muted">
                             Personal settings
                         </li>
                         <li>

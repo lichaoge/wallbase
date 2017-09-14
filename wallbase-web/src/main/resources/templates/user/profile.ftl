@@ -59,7 +59,7 @@
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <!-- App -->
 <script src="/js/app.plugin.js"></script>
-<script src="/js/app.js"></script>
+<#--<script src="/js/app.js"></script>-->
 <script type="text/javascript">
     $(document).ready(function () {
         //图片延时加载  //当图片没加载完显示加载图标和默认图片
