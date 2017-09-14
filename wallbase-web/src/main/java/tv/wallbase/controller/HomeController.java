@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import tv.wallbase.common.rest.Page;
+import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 
 /**
@@ -24,9 +27,18 @@ public class HomeController {
     @Resource
     private WallpaperService wallpaperService;
 
+    /**
+     * 首页
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
     public String displayIndex(Model model) {
-        logger.info("displayIndex");
+        Pageable pageable = new Pageable(1, 24);
+        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
+
+        model.addAttribute("content", page.getContent());
         return "/index";
     }
 }
