@@ -25,20 +25,17 @@
 <section class="vbox">
     <section class="w-f-md">
         <section id="waterfall" class="container scrollable padder-lg m-t-xl">
-            <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
+            <h4 class="font-thin m-b m-t-lg text-white">欢迎进入高清壁纸基地!</h4>
             <div class="row row-sm">
             <#list content as wallpaper>
                     <div class="col-xs-6 col-sm-4 col-md-3">
                         <div class="item">
                             <div class="pos-rlt">
-                                <div class="item-overlay opacity r r-2x">
-                                    <div class="center text-center m-t-n">
-                                        <a href="/wallpaper/${wallpaper.id}"><i class="icon-control-play i-2x"></i></a>
-                                    </div>
-                                </div>
+
                                 <a href="/wallpaper/${wallpaper.id}">
                                     <img src="/images/images300x200.jpg" data-original="//imgs1.lockbur.com/${wallpaper.thumbUrl}" data-provider="lazyload" class="r img-full">
                                 </a>
+                                <div class="item-overlay"></div>
                             </div>
                             <div class="wrapper-sm" ></div>
                         </div>

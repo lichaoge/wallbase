@@ -36,9 +36,15 @@
                                     <span> 随机</span>
                                 </a>
                             </li>
+                        <#--<li>-->
+                        <#--<a class="upload" href="http://alpha.wallhaven.cc/upload">-->
+                        <#--<i class="fa fa-lg fa-upload"></i>-->
+                        <#--<span> 上传</span>-->
+                        <#--</a>-->
+                        <#--</li>-->
                             <li>
-                                <a class="upload" href="http://alpha.wallhaven.cc/upload">
-                                    <i class="fa fa-lg fa-upload"></i>
+                                <a href="javascript:void(0);" class="upload" data-toggle="class:hide" data-target="#search">
+                                    <i class="icon icon-equalizer"></i>
                                     <span> 上传</span>
                                 </a>
                             </li>
@@ -53,7 +59,7 @@
                 </div><!--/.navbar-collapse -->
             </div>
         </section>
-        <footer class="header navbar text-center bg-black dker b-b b-danger b-2x animated fadeInUp" id="search">
+        <footer class="header navbar text-center bg-black dker animated fadeInUp" id="search">
             <form class="navbar-form hidden-xs" role="search">
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-dark">
