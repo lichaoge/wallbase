@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.TagMapper">
+
+    <sql id="Base_Column_List">
+    id, name, user_id, status, create_time, update_time
+  </sql>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="Tag">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_tag
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="Tag" keyProperty="id" useGeneratedKeys="true">
+    insert into tb_tag
+     (
+      name, user_id,
+      status,create_time, update_time
+      )
+    values (
+      #{name},
+      #{userId,jdbcType=INTEGER},
+      #{status,jdbcType=VARCHAR},
+      now(), now()
+      )
+  </insert>
+</mapper>

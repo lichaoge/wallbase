@@ -1,18 +1,73 @@
 package tv.wallbase.gateway.model;
 
-import tv.wallbase.gateway.domain.WallpaperPo;
-import tv.wallbase.gateway.enums.Category;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
+import lombok.ToString;
+import tv.wallbase.gateway.enums.Category;
+import tv.wallbase.gateway.enums.Purity;
+import tv.wallbase.gateway.model.*;
+
 /**
- * 图片信息
+ * 图片数据库
+ * Created by wangkun23 on 2017/7/28.
  */
 @ToString
-public class Wallpaper extends WallpaperPo {
+public class Wallpaper implements Serializable {
+    @Setter
+    @Getter
+    private Integer id;
+
+    @Setter
+    @Getter
+    private Integer categoryId;
+
+    @Setter
+    @Getter
+    private Purity purity;
+
+    @Setter
+    @Getter
+    private Double size;
+
+    @Setter
+    @Getter
+    private Integer viewsCount;
+
+    @Setter
+    @Getter
+    private Integer favoritesCount;
+
+    @Setter
+    @Getter
+   /*缩略图ULR*/
+    private String thumbUrl;
+
+    @Setter
+    @Getter
+    /*原图URL*/
+    private String imageUrl;
+
+    @Setter
+    @Getter
+    /*上传者的用户ID*/
+    private Integer userId;
+
+    @Setter
+    @Getter
+    private Integer status;
+
+    @Setter
+    @Getter
+    private Date createDate;
+
+    @Setter
+    @Getter
+    private Date updateDate;
 
     @Setter
     @Getter
@@ -37,5 +92,4 @@ public class Wallpaper extends WallpaperPo {
     @Setter
     @Getter
     private List<WallpaperCollection> collections;
-
 }

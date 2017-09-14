@@ -28,4 +28,22 @@ public class FeaturesSettings implements Serializable {
     @Getter
     private boolean dimPrivacy = true;  //默认值
 
+    /**
+     * 启用发送短信功能
+     */
+    @Setter
+    @Getter
+    private boolean enableSMS = false;  //默认值
+
+    @Setter
+    @Getter
+    private boolean enableSearch = false;  //默认值
+
+    /**
+     * 是否启用用户注册和登录功能
+     */
+    @Setter
+    @Getter
+    private boolean enableLogin = false;  //默认值
+
 }

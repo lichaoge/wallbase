@@ -1,13 +1,12 @@
 package tv.wallbase.gateway.model;
 
-
 import tv.wallbase.gateway.enums.Purity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.joda.time.DateTime;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -50,9 +49,26 @@ public class Tag implements Serializable {
 
     @Setter
     @Getter
-    private User user;
+    private Integer status;
 
     @Setter
     @Getter
-    private DateTime dateCreated;
+    /*上传者的用户ID*/
+    private Integer userId;
+
+    @Setter
+    @Getter
+    private Date createDate;
+
+    @Setter
+    @Getter
+    private Date updateDate;
+
+
+    /**
+     * 创建用户
+     */
+    @Setter
+    @Getter
+    private User user;
 }

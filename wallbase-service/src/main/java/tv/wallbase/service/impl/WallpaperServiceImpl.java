@@ -2,7 +2,6 @@ package tv.wallbase.service.impl;
 
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
-import tv.wallbase.gateway.domain.WallpaperPo;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 import tv.wallbase.mapper.WallpaperMapper;
@@ -38,7 +37,7 @@ public class WallpaperServiceImpl implements WallpaperService {
 
     @Override
     public Wallpaper findDetails(Integer id) {
-        WallpaperPo wallpaperPo = wallpaperMapper.findById(id);
+        Wallpaper wallpaper = wallpaperMapper.findById(id);
         return null;
     }
 }

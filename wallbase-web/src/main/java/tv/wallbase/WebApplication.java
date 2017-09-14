@@ -18,8 +18,6 @@ import java.util.Arrays;
  * Created by wangkun23 on 2017/9/5.
  */
 @SpringBootApplication
-@EnableAutoConfiguration
-@Configuration
 public class WebApplication {
 
     static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
@@ -27,11 +25,10 @@ public class WebApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(WebApplication.class, args);
 
-
         String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);
-//        for (String beanName : beanNames) {
-//            logger.info("bean {}", beanName);
-//        }
+        for (String beanName : beanNames) {
+            logger.info("bean {}", beanName);
+        }
     }
 }

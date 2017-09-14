@@ -3,11 +3,9 @@ package tv.wallbase.test.mapper;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import tv.wallbase.common.rest.Pageable;
-import tv.wallbase.gateway.domain.WallpaperPo;
-import tv.wallbase.gateway.enums.Purity;
 import tv.wallbase.gateway.model.Wallpaper;
+import tv.wallbase.gateway.enums.Purity;
 import tv.wallbase.mapper.WallpaperMapper;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +29,7 @@ public class WallpaperMapperTest {
 
     //@Test
     public void insert() {
-        WallpaperPo entity = new WallpaperPo();
+        Wallpaper entity = new Wallpaper();
 
         entity.setCategoryId(1);
         entity.setPurity(Purity.NSFW);

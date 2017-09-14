@@ -7,14 +7,14 @@
     user_id, status, create_time, update_time
   </sql>
 
-    <select id="findById" parameterType="java.lang.Integer" resultType="WallpaperPo">
+    <select id="findById" parameterType="java.lang.Integer" resultType="Wallpaper">
         select
         <include refid="Base_Column_List"/>
         from tb_wallpaper
         where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <insert id="insert" parameterType="WallpaperPo">
+    <insert id="insert" parameterType="Wallpaper">
     insert into tb_wallpaper
      (
       id, category_id, purity,
@@ -31,7 +31,7 @@
       now(), now()
       )
   </insert>
-    <update id="update" parameterType="WallpaperPo">
+    <update id="update" parameterType="Wallpaper">
         update tb_wallpaper
         <set>
             <if test="categoryId != null">

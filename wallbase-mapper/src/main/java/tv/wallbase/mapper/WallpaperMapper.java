@@ -2,7 +2,6 @@ package tv.wallbase.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import tv.wallbase.common.rest.Pageable;
-import tv.wallbase.gateway.domain.WallpaperPo;
 import tv.wallbase.gateway.model.Wallpaper;
 
 import java.util.List;
@@ -12,12 +11,18 @@ import java.util.List;
  */
 @Mapper
 public interface WallpaperMapper {
-    int insert(WallpaperPo record);
 
-    WallpaperPo findById(Integer id);
+    /**
+     * 插入新壁纸信息
+     *
+     * @param record
+     * @return
+     */
+    int insert(Wallpaper record);
 
-    int update(WallpaperPo record);
+    Wallpaper findById(Integer id);
 
+    int update(Wallpaper record);
 
     /**
      * 分页查询列表
