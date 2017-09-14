@@ -10,6 +10,7 @@ import java.util.List;
 import lombok.ToString;
 import tv.wallbase.gateway.enums.Category;
 import tv.wallbase.gateway.enums.Purity;
+import tv.wallbase.gateway.enums.WallpaperStatus;
 import tv.wallbase.gateway.model.*;
 
 /**
@@ -24,7 +25,8 @@ public class Wallpaper implements Serializable {
 
     @Setter
     @Getter
-    private Integer categoryId;
+   /*标题 现在是wallhaven 的id*/
+    private String title;
 
     @Setter
     @Getter
@@ -59,7 +61,7 @@ public class Wallpaper implements Serializable {
 
     @Setter
     @Getter
-    private Integer status;
+    private WallpaperStatus status;
 
     @Setter
     @Getter

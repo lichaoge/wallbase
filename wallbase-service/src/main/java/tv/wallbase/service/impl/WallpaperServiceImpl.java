@@ -1,5 +1,6 @@
 package tv.wallbase.service.impl;
 
+import org.springframework.transaction.annotation.Transactional;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
 import tv.wallbase.gateway.model.Wallpaper;
@@ -17,9 +18,19 @@ import java.util.List;
 @Service
 public class WallpaperServiceImpl implements WallpaperService {
 
-
     @Resource
     WallpaperMapper wallpaperMapper;
+
+    /**
+     * 保存
+     *
+     * @param wallpaper
+     */
+    @Override
+    @Transactional
+    public void save(Wallpaper wallpaper) {
+        wallpaperMapper.insert(wallpaper);
+    }
 
     /**
      * 分页查询
@@ -37,7 +48,6 @@ public class WallpaperServiceImpl implements WallpaperService {
 
     @Override
     public Wallpaper findDetails(Integer id) {
-        Wallpaper wallpaper = wallpaperMapper.findById(id);
-        return null;
+        return wallpaperMapper.findById(id);
     }
 }

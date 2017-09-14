@@ -3,6 +3,8 @@ package tv.wallbase.test.mapper;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.gateway.enums.Category;
+import tv.wallbase.gateway.enums.WallpaperStatus;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.enums.Purity;
 import tv.wallbase.mapper.WallpaperMapper;
@@ -31,7 +33,7 @@ public class WallpaperMapperTest {
     public void insert() {
         Wallpaper entity = new Wallpaper();
 
-        entity.setCategoryId(1);
+        entity.setCategory(Category.GENERAL);
         entity.setPurity(Purity.NSFW);
         entity.setViewsCount(0);
         entity.setFavoritesCount(0);
@@ -39,7 +41,7 @@ public class WallpaperMapperTest {
         entity.setImageUrl("http://imgs1.lockbur.com/group1/M00/08/F9/eznwC1YkoHCAGa24AABYvk7fAVs719.jpg");
         entity.setThumbUrl("http://imgs1.lockbur.com/group1/M00/08/F9/eznwC1YkoHCAGa24AABYvk7fAVs719.jpg");
         entity.setUserId(1);
-        entity.setStatus(0);
+        entity.setStatus(WallpaperStatus.UNASSIGNED);
 
         wallpaperMapper.insert(entity);
     }

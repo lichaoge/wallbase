@@ -11,6 +11,13 @@ import tv.wallbase.gateway.model.Wallpaper;
 public interface WallpaperService {
 
     /**
+     * 保存
+     *
+     * @param wallpaper
+     */
+    void save(Wallpaper wallpaper);
+
+    /**
      * 分页查询
      *
      * @return

@@ -23,9 +23,5 @@ public interface TagMapper {
      * @param name
      * @return
      */
-    Tag getByName(@Param("name") String name);
-
-
-    List<Tag> findTagStringByName(@Param("name") String name);
-
+    Tag findByName(@Param("name") String name);
 }
