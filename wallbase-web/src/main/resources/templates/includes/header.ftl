@@ -60,7 +60,6 @@
             </div>
         </section>
         <footer class="header navbar text-center bg-black dker animated fadeInUp" id="search">
-        <footer class="header navbar text-center bg-black dker b-b b-danger b-2x animated fadeInUp hide" id="search">
             <form class="navbar-form hidden-xs" role="search">
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-dark">
