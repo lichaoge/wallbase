@@ -24,25 +24,12 @@
 <#include "includes/header.ftl"/>
 <section class="vbox">
     <section class="w-f-md">
-        <section id="waterfall" class="container scrollable padder-lg m-t-xl">
-            <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
-            <div class="row row-sm">
+        <section id="waterfall" class="scrollable m-t">
+            <div id="basicExample">
             <#list content as wallpaper>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="item-overlay opacity r r-2x">
-                                    <div class="center text-center m-t-n">
-                                        <a href="/wallpaper/${wallpaper.id}"><i class="icon-control-play i-2x"></i></a>
-                                    </div>
-                                </div>
-                                <a href="/wallpaper/${wallpaper.id}">
-                                    <img src="/images/images300x200.jpg" data-original="//imgs1.lockbur.com/${wallpaper.thumbUrl}" data-provider="lazyload" class="r img-full">
-                                </a>
-                            </div>
-                            <div class="wrapper-sm" ></div>
-                        </div>
-                    </div>
+                <a href="/images/images300x200.jpg">
+                    <img alt="${wallpaper.id}" src="//imgs1.lockbur.com/${wallpaper.thumbUrl}"/>
+                </a>
             </#list>
             </div>
         </section>
@@ -56,6 +43,8 @@
 <script src="/plugins/bootstrap/bootstrap.js"></script>
 <script src="/plugins/vegas/vegas.js"></script>
 <script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
+<script src="/plugins/justifiedGallery/js/jquery.justifiedGallery.js"></script>
+
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <!-- App -->
 <script src="/js/app.plugin.js"></script>
@@ -66,6 +55,12 @@
         $("img[data-provider=lazyload]").lazyload({
             placeholder: "/images/images300x200.jpg",
             container: $("#waterfall")
+        });
+
+        $("#basicExample").justifiedGallery({
+            rowHeight: 200,
+            lastRow: 'justify',
+            margins: 3
         });
 
     });
