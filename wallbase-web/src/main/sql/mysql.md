@@ -43,3 +43,14 @@ CREATE TABLE `tb_wallpaper_tag` (
   KEY `FK_ae5cefixnolyd7t1goh57af9n` (`tag_id`) USING BTREE
 ) ENGINE=InnoDB COMMENT='壁纸标签表'
 ```
+## 已经采集的图片数据（create time 2017-09-21）
+CREATE TABLE `tb_colletor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识',
+  `site` varchar(255) DEFAULT NULL COMMENT '网站名称',
+  `url`  varchar(255) DEFAULT NULL COMMENT '源url地址',
+  `name`  varchar(100) DEFAULT NULL COMMENT '所在网站的id或者文件名',
+  `status` varchar(50) DEFAULT NULL,
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB COMMENT='已经采集的图片数据';

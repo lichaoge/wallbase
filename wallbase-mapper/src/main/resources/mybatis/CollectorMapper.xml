@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.CollectorMapper">
+
+    <sql id="Base_Column_List">
+    id,site,url,name, status, create_time, update_time
+  </sql>
+
+    <select id="findBySiteAndName" resultType="Collector">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        tb_colletor
+        where
+        site = #{site} AND name = #{name}
+    </select>
+
+    <insert id="insert" parameterType="Collector" keyProperty="id" useGeneratedKeys="true">
+    insert into tb_colletor
+     (
+      site,url,name,
+      status,create_time, update_time
+      )
+    values (
+      #{site},#{url},#{name},
+      #{status,jdbcType=VARCHAR},
+      now(), now()
+      )
+  </insert>
+</mapper>
