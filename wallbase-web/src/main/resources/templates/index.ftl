@@ -62,10 +62,11 @@
         $("#waterfall").justifiedGallery({
             rowHeight: 200,
             lastRow: 'justify',
-            rel: 'gallery1', //replace with 'gallery1' the rel attribute of each link
+            rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
             margins: 3
         }).on('jg.complete', function () {
             $(this).find('a').colorbox({
+                rel: 'gallery',
                 maxWidth: '80%',
                 maxHeight: '80%',
                 opacity: 0.8,
