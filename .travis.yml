@@ -14,7 +14,7 @@ deploy:
   provider: releases
   api_key: $access_tokens
   file:
-    - "wallbase/wallbase/wallbase-web/target/wallbase-web-1.0-SNAPSHOT.jar"
+    - "wallbase-web/target/wallbase-web-1.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
      tags: true
