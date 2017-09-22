@@ -10,6 +10,7 @@ before_script:
   - cd wallbase-web//src/main/resources
   - pwd
   - npm install -g gulp-cli
+  - npm install
   - gulp clean
   - gulp build
 script:
