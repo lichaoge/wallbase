@@ -41,8 +41,8 @@ gulp.task('minifycss', function () {
         "./static/css/simple-line-icons.css",
         "./static/css/font.css",
         "./static/plugins/vegas/vegas.css",
-        "./static/plugins/justifiedGallery/css/justifiedGallery.css",
         "./static/plugins/colorbox/colorbox.css",
+        "./static/plugins/justifiedGallery/css/justifiedGallery.css",
     ]).pipe(concat('app.min.css'))      //合并css文件到"order_query"
         .pipe(minifycss())                //压缩文件
         .pipe(gulp.dest('./static/build-' + pkg.version + '/css'));//输出文件目录
@@ -59,7 +59,6 @@ gulp.task("uglify", function () {
             './static/plugins/colorbox/jquery.colorbox-min.js',
             './static/plugins/justifiedGallery/js/jquery.justifiedGallery.js',
             './static/plugins/slimscroll/jquery.slimscroll.min.js',
-            './static/plugins/slimscroll/jquery.slimscroll.min.js',
         ]).pipe(concat('app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./static/build-' + pkg.version + '/js'));
@@ -69,6 +68,7 @@ gulp.task("uglify", function () {
 gulp.task("copy", function () {
     gulp.src('./static/fonts/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/fonts'));
     gulp.src('./static/images/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/images'));
+    gulp.src('./static/plugins/colorbox/images/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/css/images'));
 });
 
 
