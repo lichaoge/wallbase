@@ -40,49 +40,4 @@
     </footer>
 </section>
 </body>
-<script src="/plugins/jquery/jquery-2.2.4.min.js"></script>
-<script src="/plugins/bootstrap/bootstrap.js"></script>
-<script src="/plugins/vegas/vegas.js"></script>
-<script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
-<script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
-<script src="/plugins/justifiedGallery/js/jquery.justifiedGallery.js"></script>
-
-<script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<!-- App -->
-<script src="/js/app.plugin.js"></script>
-<#--<script src="/js/app.js"></script>-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        //图片延时加载  //当图片没加载完显示加载图标和默认图片
-        $("img[data-provider=lazyload]").lazyload({
-            placeholder: "/images/images300x200.jpg",
-            container: $("#waterfall")
-        });
-
-        $("#waterfall").justifiedGallery({
-            rowHeight: 200,
-            lastRow: 'justify',
-            rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
-            margins: 3,
-            randomize:true
-        }).on('jg.complete', function () {
-            $(this).find('a').colorbox({
-                rel: 'gallery',
-                maxWidth: '80%',
-                maxHeight: '80%',
-                opacity: 0.8,
-                transition: 'elastic',
-                current: "当前图像 {current} 总共 {total}",
-                previous: "前一页",
-                next: "后一页",
-                close: "关闭",
-                xhrError: "此内容无法加载",
-                imgError: "此图片无法加载",
-                slideshowStart: "开始播放幻灯片",
-                slideshowStop: "停止播放幻灯片"
-            });
-        });
-
-    });
-</script>
 </html>

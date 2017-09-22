@@ -15,6 +15,16 @@ mvn spring-boot:run
 >注意
 ##### <span style="color:blue;">我使用MySQL版本是：5.7.19,开发工具使用的 idea 2016.3 </span>
 
+#####
+ 
+```
+cd /wallbase-web/src/main/resources
+cnpm install --global gulp
+cnpm install
+gulp clean
+gulp build
+```
+
 项目地址 : [https://github.com/wallbase/wallbase](https://github.com/wallbase/wallbase).
 
 

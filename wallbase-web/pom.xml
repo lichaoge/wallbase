@@ -94,8 +94,9 @@
                 <directory>src/main/resources</directory>
                 <excludes>
                     <exclude>app/**</exclude>
-                    <exclude>Gruntfile.js</exclude>
+                    <exclude>gulpfile.js</exclude>
                     <exclude>static/fonts/**</exclude>
+                    <exclude>static/build*/**</exclude>
                     <exclude>static/favicon.ico</exclude>
                 </excludes>
                 <filtering>true</filtering>
@@ -106,6 +107,7 @@
                 <includes>
                     <!--如果是用filtering true，那么字体文件会被破坏-->
                     <include>static/fonts/**</include>
+                    <include>static/build*/**</include>
                     <include>static/favicon.ico</include>
                 </includes>
             </resource>
