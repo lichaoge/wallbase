@@ -63,7 +63,8 @@
             rowHeight: 200,
             lastRow: 'justify',
             rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
-            margins: 3
+            margins: 3,
+            randomize:true
         }).on('jg.complete', function () {
             $(this).find('a').colorbox({
                 rel: 'gallery',
