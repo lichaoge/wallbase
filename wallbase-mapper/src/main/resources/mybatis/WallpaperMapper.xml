@@ -24,7 +24,7 @@
        create_time, update_time
       )
     values (
-     #{id,jdbcType=INTEGER}, #{title},#{category,jdbcType=INTEGER}, #{purity,jdbcType=VARCHAR},
+     #{id,jdbcType=INTEGER}, #{title},#{category}, #{purity,jdbcType=VARCHAR},
       #{size,jdbcType=DOUBLE}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER}, 
       #{thumbUrl,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
       #{status,jdbcType=VARCHAR},
@@ -38,7 +38,7 @@
                 title = #{title},
             </if>
             <if test="category != null">
-                category = #{category,jdbcType=INTEGER},
+                category = #{category},
             </if>
             <if test="purity != null">
                 purity = #{purity,jdbcType=VARCHAR},
