@@ -44,6 +44,7 @@ CREATE TABLE `tb_wallpaper_tag` (
 ) ENGINE=InnoDB COMMENT='壁纸标签表'
 ```
 ## 已经采集的图片数据（create time 2017-09-21）
+```sql
 CREATE TABLE `tb_colletor` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识',
   `site` varchar(255) DEFAULT NULL COMMENT '网站名称',
@@ -54,3 +55,15 @@ CREATE TABLE `tb_colletor` (
   `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB COMMENT='已经采集的图片数据';
+
+```
+
+## 流水号（create time 2017-09-22）
+```sql
+CREATE TABLE `tb_sequence` (
+  `name` varchar(30) NOT NULL COMMENT '序列类别',
+  `nextid` int(11) NOT NULL COMMENT '下一个ID',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB COMMENT "流水号";
+
+```

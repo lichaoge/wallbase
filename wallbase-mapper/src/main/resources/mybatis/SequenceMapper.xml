@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.SequenceMapper">
+
+    <insert id="insert" parameterType="tv.wallbase.gateway.model.Sequence">
+    insert into tb_sequence
+    (name, nextid)
+    values
+    (#{name}, #{nextId})
+  </insert>
+
+    <select id="getSequence" resultType="tv.wallbase.gateway.model.Sequence">
+    SELECT
+    name, nextid
+    FROM
+    tb_sequence
+    WHERE
+    NAME = #{name}
+  </select>
+
+    <update id="updateSequence" parameterType="tv.wallbase.gateway.model.Sequence">
+    UPDATE
+    tb_sequence
+    SET nextid = #{nextId}
+    WHERE
+    NAME = #{name}
+  </update>
+
+</mapper>
