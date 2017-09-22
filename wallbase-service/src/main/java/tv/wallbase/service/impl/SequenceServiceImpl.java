@@ -38,8 +38,6 @@ public class SequenceServiceImpl implements SequenceService {
      */
     public synchronized String generateWallpaperNo() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("wallbase");//房联订单
-        stringBuilder.append("-");//平台ID
 
         NumberFormat formatter = NumberFormat.getNumberInstance();
         formatter.setMinimumIntegerDigits(6);
