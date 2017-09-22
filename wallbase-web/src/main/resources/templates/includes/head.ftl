@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<@s.url '/css/bootstrap.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@s.url '/plugins/vegas/vegas.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@s.url '/plugins/justifiedGallery/css/justifiedGallery.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<@s.url '/plugins/colorbox/colorbox.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@s.url '/css/animate.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@s.url '/css/font-awesome.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@s.url '/css/simple-line-icons.css'/>" type="text/css"/>

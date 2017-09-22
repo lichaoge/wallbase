@@ -9,6 +9,7 @@
     <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15"/>
     <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
 <#include "includes/head.ftl"/>
+
     <!--百度统计-->
 <#--<script>-->
 <#--var _hmt = _hmt || [];-->
@@ -25,13 +26,13 @@
 <section class="vbox">
     <section class="w-f-md">
         <section id="waterfall" class="scrollable">
-            <div id="basicExample">
-            <#list content as wallpaper>
-                <a href="/images/images300x200.jpg">
-                    <img alt="${wallpaper.id}" src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
-                </a>
-            </#list>
-            </div>
+        <#list content as wallpaper>
+            <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
+                <img data-provider="lazyload"
+                     src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"
+                     alt="${wallpaper.id}"/>
+            </a>
+        </#list>
         </section>
     </section>
     <footer class="footer bg-black dker">
@@ -43,6 +44,7 @@
 <script src="/plugins/bootstrap/bootstrap.js"></script>
 <script src="/plugins/vegas/vegas.js"></script>
 <script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
+<script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/plugins/justifiedGallery/js/jquery.justifiedGallery.js"></script>
 
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
@@ -57,10 +59,26 @@
             container: $("#waterfall")
         });
 
-        $("#basicExample").justifiedGallery({
+        $("#waterfall").justifiedGallery({
             rowHeight: 200,
             lastRow: 'justify',
+            rel: 'gallery1', //replace with 'gallery1' the rel attribute of each link
             margins: 3
+        }).on('jg.complete', function () {
+            $(this).find('a').colorbox({
+                maxWidth: '80%',
+                maxHeight: '80%',
+                opacity: 0.8,
+                transition: 'elastic',
+                current: "当前图像 {current} 总共 {total}",
+                previous: "前一页",
+                next: "后一页",
+                close: "关闭",
+                xhrError: "此内容无法加载",
+                imgError: "此图片无法加载",
+                slideshowStart: "开始播放幻灯片",
+                slideshowStop: "停止播放幻灯片"
+            });
         });
 
     });
