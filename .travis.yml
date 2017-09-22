@@ -5,19 +5,18 @@ jdk:
 
 cache:
   directories:
+  - wallbase-web/src/main/resources/bower_components
+  - wallbase-web/src/main/resources/node_modules
   - $HOME/.m2
 before_script:
-  - cd wallbase-web//src/main/resources
-  - pwd
+  - cd wallbase-web/src/main/resources
   - npm install -g gulp-cli
   - npm install
   - gulp clean
   - gulp build
 script:
-  - cd $TRAVIS_BUILD_DIR
-  - pwd
   - mvn clean install -Dmaven.test.skip=true
-after_script:
+after_success:
   - cp wallbase-web/target/wallbase-web-1.0-SNAPSHOT.jar ./
 deploy:
 #  provider: releases
