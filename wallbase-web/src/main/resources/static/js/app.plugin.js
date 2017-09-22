@@ -17,31 +17,20 @@
             });
         });
 
+        $("img").error(function () {
+            $(this).attr("src", CC.assets_url + 'assets/images/image20.jpg');
+        });
         //chosen
         $(".chosen-select").length && $(".chosen-select").chosen();
 
-        //添加到收藏夹
-        $.fn.addFavorite = function () {
-            var _self = this;
-            var _photo_id = this.data("photos-id");
-            //隐藏添加收藏 显示正在加载
-            _self.hide().siblings("span").removeClass("hide");
-            $.ajax({
-                type: "post",
-                url: "member/favorite/add",
-                data: {photosId: _photo_id},
-                dataType: "json",
-                success: function (data) {
-                    //成功后显示红星
-                    _self.siblings("span").addClass("hide");
-                    _self.siblings("a").removeClass("hide");
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(errorThrown);
-                }
-            });
-        };
-        //END addFavorite
+
+        //背景图片
+        // $('body').vegas({
+        //     timer: false,
+        //     slides: [
+        //         {src: CC.assets_url + 'assets/images/background1.jpg'}
+        //     ]
+        // });
 
         //图片延时加载  //当图片没加载完显示加载图标和默认图片
         $("img[data-provider=lazyload]").lazyload({
