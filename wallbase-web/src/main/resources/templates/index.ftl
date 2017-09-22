@@ -24,11 +24,11 @@
 <#include "includes/header.ftl"/>
 <section class="vbox">
     <section class="w-f-md">
-        <section id="waterfall" class="scrollable m-t">
+        <section id="waterfall" class="scrollable">
             <div id="basicExample">
             <#list content as wallpaper>
                 <a href="/images/images300x200.jpg">
-                    <img alt="${wallpaper.id}" src="//imgs1.lockbur.com/${wallpaper.thumbUrl}"/>
+                    <img alt="${wallpaper.id}" src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
                 </a>
             </#list>
             </div>
@@ -48,7 +48,7 @@
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <!-- App -->
 <script src="/js/app.plugin.js"></script>
-<script src="/js/app.js"></script>
+<#--<script src="/js/app.js"></script>-->
 <script type="text/javascript">
     $(document).ready(function () {
         //图片延时加载  //当图片没加载完显示加载图标和默认图片
