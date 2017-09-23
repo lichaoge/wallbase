@@ -27,5 +27,5 @@ deploy:
 #    - "wallbase-web/target/wallbase-web-1.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
-#     tags: true
+     tags: true
      branch: master
