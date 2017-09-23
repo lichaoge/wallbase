@@ -59,7 +59,6 @@ gulp.task("uglify", function () {
             './static/plugins/colorbox/jquery.colorbox-min.js',
             './static/plugins/justifiedGallery/js/jquery.justifiedGallery.js',
             './static/plugins/slimscroll/jquery.slimscroll.min.js',
-            './static/plugins/slimscroll/jquery.slimscroll.min.js',
         ]).pipe(concat('app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./static/build-' + pkg.version + '/js'));
@@ -69,6 +68,7 @@ gulp.task("uglify", function () {
 gulp.task("copy", function () {
     gulp.src('./static/fonts/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/fonts'));
     gulp.src('./static/images/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/images'));
+    gulp.src('./static/plugins/colorbox/images/**/*').pipe(gulp.dest('./static/build-' + pkg.version + '/css/images'));
 });
 
 
