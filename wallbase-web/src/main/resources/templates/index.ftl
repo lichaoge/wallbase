@@ -28,9 +28,7 @@
         <section id="waterfall" class="scrollable">
         <#list content as wallpaper>
             <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
-                <img data-provider="lazyload"
-                     src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"
-                     alt="${wallpaper.id}"/>
+                <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
             </a>
         </#list>
         </section>
