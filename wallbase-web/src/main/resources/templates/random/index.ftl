@@ -12,11 +12,14 @@
         <section id="waterfall" class="scrollable">
         <#list list as wallpaper>
             <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
-                <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
+                <img src="http://img2.lockbur.com/wallbase-10013958.jpg?x-oss-process=style/thumb"/>
             </a>
         </#list>
         </section>
     </section>
+    <div class="scroller-status">
+        <a class="pagination__next" href="page2.html">Next page</a>
+    </div>
     <footer class="footer bg-black dker">
     <#include "../includes/footer.ftl"/>
     </footer>
@@ -25,9 +28,11 @@
 <script>
     $(document).ready(function () {
         $("#waterfall").infiniteScroll({
-            path: '/random/next',
-            append: '.post',
-            history: false,
+            path: '.pagination__next',
+            hideNav: '.pagination',
+            append: '#waterfall'
+            status: '.scroller-status',
+            debug: true,
         });
     });
 </script>
