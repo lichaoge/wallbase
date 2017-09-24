@@ -1,26 +1,24 @@
 package tv.wallbase.controller;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 
+import javax.annotation.Resource;
+
 /**
- * 首页入口
- *
- * @author youyou
+ * 随机
+ * Created by wangkun23 on 2017/9/24.
  */
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/random")
+public class RandomController {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -28,17 +26,33 @@ public class HomeController {
     private WallpaperService wallpaperService;
 
     /**
-     * 首页
+     * random page
      *
      * @param model
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public String displayIndex(Model model) {
+    @RequestMapping
+    public String list(Model model) {
         Pageable pageable = new Pageable(1, 24);
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("content", page.getContent());
-        return "/index";
+        model.addAttribute("list", page.getContent());
+        return "/random/index";
+    }
+
+    /**
+     * infinitescroll
+     *
+     * @param pages
+     * @param model
+     * @return
+     */
+    @RequestMapping("/next")
+    public String infinitescroll(Integer pages, Model model) {
+        Pageable pageable = new Pageable(pages, 24);
+        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
+
+        model.addAttribute("list", page.getContent());
+        return "/random/next";
     }
 }

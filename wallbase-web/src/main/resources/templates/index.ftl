@@ -38,4 +38,14 @@
     </footer>
 </section>
 </body>
+<script>
+    $(document).ready(function () {
+        $("#waterfall").infiniteScroll({
+            // options
+            path: '.pagination__next',
+            append: '.post',
+            history: false,
+        });
+    });
+</script>
 </html>
