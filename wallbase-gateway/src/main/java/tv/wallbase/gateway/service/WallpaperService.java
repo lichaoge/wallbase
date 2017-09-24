@@ -18,6 +18,13 @@ public interface WallpaperService {
     void save(Wallpaper wallpaper);
 
     /**
+     * 修改
+     *
+     * @param wallpaper
+     */
+    void update(Wallpaper wallpaper);
+
+    /**
      * 分页查询
      *
      * @return

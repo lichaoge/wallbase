@@ -3,7 +3,7 @@
 <mapper namespace="tv.wallbase.mapper.WallpaperMapper">
 
     <sql id="Base_Column_List">
-    id, title,category, purity, size, views_count, favorites_count, thumb_url, image_url,
+    id, title,category, purity, size,width,height, views_count, favorites_count, thumb_url, image_url,
     user_id, status, create_time, update_time
   </sql>
 
@@ -25,7 +25,7 @@
       )
     values (
      #{id,jdbcType=INTEGER}, #{title},#{category}, #{purity,jdbcType=VARCHAR},
-      #{size,jdbcType=DOUBLE}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER}, 
+      #{size,jdbcType=DOUBLE},#{width},#{height}, #{viewsCount,jdbcType=INTEGER}, #{favoritesCount,jdbcType=INTEGER},
       #{thumbUrl,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
       #{status,jdbcType=VARCHAR},
       now(), now()
@@ -45,6 +45,12 @@
             </if>
             <if test="size != null">
                 size = #{size,jdbcType=DOUBLE},
+            </if>
+            <if test="width != null">
+                width = #{width},
+            </if>
+            <if test="height != null">
+                height = #{height},
             </if>
             <if test="viewsCount != null">
                 views_count = #{viewsCount,jdbcType=INTEGER},
@@ -75,7 +81,6 @@
     </update>
 
 
-
     <!--分页使用 findByPage-->
     <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper"
             parameterType="tv.wallbase.common.rest.Pageable">
@@ -88,7 +93,8 @@
                     <choose>
                         <when test="filter.operator.key=='in'">
                             ${filter.property} ${filter.operator.key}
-                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator="," close=")">
+                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator=","
+                                     close=")">
                                 ${value}
                             </foreach>
                         </when>

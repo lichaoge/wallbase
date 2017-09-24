@@ -38,6 +38,14 @@ public class Wallpaper implements Serializable {
 
     @Setter
     @Getter
+    private Integer width;
+
+    @Setter
+    @Getter
+    private Integer height;
+
+    @Setter
+    @Getter
     private Integer viewsCount;
 
     @Setter
@@ -65,11 +73,11 @@ public class Wallpaper implements Serializable {
 
     @Setter
     @Getter
-    private Date createDate;
+    private Date createTime;
 
     @Setter
     @Getter
-    private Date updateDate;
+    private Date updateTime;
 
     @Setter
     @Getter

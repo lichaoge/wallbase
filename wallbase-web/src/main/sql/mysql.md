@@ -16,6 +16,9 @@ CREATE TABLE `tb_wallpaper` (
   `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB COMMENT='壁纸表'
+
+alter TABLE tb_wallpaper add COLUMN width int(10) DEFAULT NULL COMMENT "壁纸宽度" ;
+alter TABLE tb_wallpaper add COLUMN height int(10) DEFAULT NULL COMMENT "壁纸高度";
 ```
 
 ## 标签表 （create time 2017-09-14）

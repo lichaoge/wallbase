@@ -33,6 +33,16 @@ public class WallpaperServiceImpl implements WallpaperService {
     }
 
     /**
+     * 修改
+     *
+     * @param wallpaper
+     */
+    @Override
+    public void update(Wallpaper wallpaper) {
+        wallpaperMapper.update(wallpaper);
+    }
+
+    /**
      * 分页查询
      *
      * @param pageable
