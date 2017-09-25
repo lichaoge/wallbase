@@ -11,28 +11,32 @@
     <section class="w-f-md">
         <section id="waterfall" class="scrollable">
         <#list list as wallpaper>
-            <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
-                <img src="http://img2.lockbur.com/wallbase-10013958.jpg?x-oss-process=style/thumb"/>
-            </a>
+            <div class="item">
+                <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
+                    <img src="http://img2.lockbur.com/wallbase-10013958.jpg?x-oss-process=style/thumb"/>
+                </a>
+            </div>
         </#list>
         </section>
+        <div class="scroller-status">
+            <div class="text-center">
+                <img src="/images/loading.gif">
+            </div>
+        </div>
     </section>
-    <div class="scroller-status">
-        <a class="pagination__next" href="page2.html">Next page</a>
-    </div>
     <footer class="footer bg-black dker">
     <#include "../includes/footer.ftl"/>
     </footer>
 </section>
 </body>
+<script src="/plugins/infinite-scroll/infinite-scroll.pkgd.js"></script>
 <script>
     $(document).ready(function () {
-        $("#waterfall").infiniteScroll({
-            path: '.pagination__next',
-            hideNav: '.pagination',
-            append: '#waterfall'
+        $("waterfall").infiniteScroll({
+            path: '/random/next?page={{#}}',
+            append: '.item',
             status: '.scroller-status',
-            debug: true,
+            debug: true
         });
     });
 </script>
