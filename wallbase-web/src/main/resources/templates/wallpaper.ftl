@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row">
-                dd
+
             </div>
         </div>
     </section>
