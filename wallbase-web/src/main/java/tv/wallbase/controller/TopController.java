@@ -38,17 +38,16 @@ public class TopController {
     /**
      * 每次加载24张图片
      *
-     * @param request
      * @param model
      * @return
      */
     @RequestMapping
-    public String list(HttpServletRequest request, Model model) {
+    public String list(Model model) {
         Pageable pageable = new Pageable(1, 24);
-        pageable.setSorts(Arrays.asList(new Sort("order", Sort.Direction.desc)));
-        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
+        pageable.setSorts(Arrays.asList(new Sort("viewsCount", Sort.Direction.desc)));
+        Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("page", page);
+        model.addAttribute("pages", pages);
         return "/top/index";
     }
 
@@ -61,9 +60,9 @@ public class TopController {
     @RequestMapping("/next")
     public String infiniteScroll(Integer page, Model model) {
         Pageable pageable = new Pageable(page, 24);
-        pageable.setSorts(Arrays.asList(new Sort("order", Sort.Direction.desc)));
+        pageable.setSorts(Arrays.asList(new Sort("viewsCount", Sort.Direction.desc)));
         Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
-        model.addAttribute("list", pages.getContent());
+        model.addAttribute("pages", pages);
 
         return "/random/next";
     }

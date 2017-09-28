@@ -26,7 +26,7 @@
 <section class="vbox">
     <section class="w-f-md">
         <section id="waterfall" class="scrollable">
-        <#list content as wallpaper>
+        <#list pages.content as wallpaper>
             <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
                 <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
             </a>

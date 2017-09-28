@@ -39,9 +39,8 @@ public class LatestController {
     public String list(Model model) {
         Pageable pageable = new Pageable(1, 24);
         pageable.setSorts(Arrays.asList(new Sort("createTime", Sort.Direction.desc)));
-        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
-
-        model.addAttribute("page", page);
+        Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
+        model.addAttribute("pages", pages);
         return "/latest/index";
     }
 
@@ -56,8 +55,7 @@ public class LatestController {
         Pageable pageable = new Pageable(page, 24);
         pageable.setSorts(Arrays.asList(new Sort("createTime", Sort.Direction.desc)));
         Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
-        model.addAttribute("list", pages.getContent());
-
+        model.addAttribute("pages", pages);
         return "/latest/next";
     }
 }

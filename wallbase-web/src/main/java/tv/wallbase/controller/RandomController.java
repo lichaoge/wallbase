@@ -34,9 +34,9 @@ public class RandomController {
     @RequestMapping
     public String list(Model model) {
         Pageable pageable = new Pageable(1, 24);
-        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
+        Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("list", page.getContent());
+        model.addAttribute("pages", pages);
         return "/random/index";
     }
 
@@ -52,7 +52,7 @@ public class RandomController {
         Pageable pageable = new Pageable(page, 24);
         Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("list", pages.getContent());
+        model.addAttribute("pages", pages);
         return "/random/next";
     }
 }

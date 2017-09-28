@@ -44,9 +44,10 @@
                         <#--</a>-->
                         <#--</li>-->
                             <li>
-                                <a href="javascript:void(0);" class="upload" data-toggle="class:hide" data-target="#search">
+                                <a href="javascript:void(0);" class="upload" data-toggle="class:hide"
+                                   data-target="#search">
                                     <i class="icon icon-equalizer"></i>
-                                    <span> 上传</span>
+                                    <span> 更多</span>
                                 </a>
                             </li>
                             <li>
