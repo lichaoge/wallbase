@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="thumbnail">
                     <img id="sample_picture"
-                         src="http://img2.lockbur.com/wallbase-10010136.jpg"
+                         src="//img2.lockbur.com/${wallpaper.thumbUrl}"
                          class="img-full center-block"/>
                 </div>
                 <div class="btn-group btn-group-justified">
                     <a id='rotate_right' class="btn btn-default">
-                        <i class='fa fa-rotate-left fa-3x'></i>
+                        <i class='fa fa-rotate-right fa-3x'></i>
                     </a>
                     <a id='zoom_out' class="btn btn-default">
                         <i class='fa fa-search-minus fa-3x'></i>
@@ -31,7 +31,7 @@
                         <i class='fa fa-search-plus fa-3x'></i>
                     </a>
                     <a id='rotate_left' class="btn btn-default">
-                        <i class='fa fa-rotate-right fa-3x'></i>
+                        <i class='fa fa-rotate-left fa-3x'></i>
                     </a>
                 </div>
             </div>
