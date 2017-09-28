@@ -1,58 +1,71 @@
 package tv.wallbase.controller;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.common.rest.Sort;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * 随机
+ * 排行榜 初步使用查看最多来排名
+ * <p>
  * Created by wangkun23 on 2017/9/24.
  */
 @Controller
-@RequestMapping("/random")
-public class RandomController {
+@RequestMapping("/top")
+public class TopController {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private WallpaperService wallpaperService;
 
+
     /**
-     * random page
+     * 每次加载24张图片
      *
+     * @param request
      * @param model
      * @return
      */
     @RequestMapping
-    public String list(Model model) {
+    public String list(HttpServletRequest request, Model model) {
         Pageable pageable = new Pageable(1, 24);
+        pageable.setSorts(Arrays.asList(new Sort("order", Sort.Direction.desc)));
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("list", page.getContent());
-        return "/random/index";
+        model.addAttribute("page", page);
+        return "/top/index";
     }
 
     /**
-     * infiniteScroll
+     * 查看更多 无限加载
      *
-     * @param pages
      * @param model
      * @return
      */
     @RequestMapping("/next")
-    public String infiniteScroll(Integer pages, Model model) {
-        Pageable pageable = new Pageable(pages, 24);
+    public String infiniteScroll(int pages, Model model) {
+        Pageable pageable = new Pageable(1, 24);
+        pageable.setSorts(Arrays.asList(new Sort("order", Sort.Direction.desc)));
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
-
         model.addAttribute("list", page.getContent());
+
         return "/random/next";
     }
+
 }

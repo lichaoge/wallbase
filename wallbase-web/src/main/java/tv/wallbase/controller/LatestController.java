@@ -1,5 +1,7 @@
 package tv.wallbase.controller;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -7,18 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.common.rest.Sort;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 
-import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
- * 随机
+ * 最新圖片 lastest
+ * <p>
  * Created by wangkun23 on 2017/9/24.
  */
 @Controller
-@RequestMapping("/random")
-public class RandomController {
+@RequestMapping("/latest")
+public class LatestController {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -26,7 +30,7 @@ public class RandomController {
     private WallpaperService wallpaperService;
 
     /**
-     * random page
+     * 每次加载24张图片
      *
      * @param model
      * @return
@@ -34,25 +38,26 @@ public class RandomController {
     @RequestMapping
     public String list(Model model) {
         Pageable pageable = new Pageable(1, 24);
+        pageable.setSorts(Arrays.asList(new Sort("createTime", Sort.Direction.desc)));
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("list", page.getContent());
-        return "/random/index";
+        model.addAttribute("page", page);
+        return "/latest/index";
     }
 
     /**
-     * infiniteScroll
+     * 查看更多 无限加载
      *
-     * @param pages
      * @param model
      * @return
      */
     @RequestMapping("/next")
-    public String infiniteScroll(Integer pages, Model model) {
+    public String infiniteScroll(int pages, Model model) {
         Pageable pageable = new Pageable(pages, 24);
+        pageable.setSorts(Arrays.asList(new Sort("createTime", Sort.Direction.desc)));
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
-
         model.addAttribute("list", page.getContent());
-        return "/random/next";
+
+        return "/latest/next";
     }
 }
