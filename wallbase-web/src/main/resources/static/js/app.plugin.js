@@ -91,7 +91,6 @@
         }, function (newElems) {
             //程序执行完的回调函数
             var $newElements = $(newElems);
-            console.log($newElements);
             $('#waterfall').append($newElements);
             $('#waterfall').justifiedGallery('norewind');
         });
