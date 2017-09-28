@@ -48,7 +48,7 @@
             waitThumbnailsLoad: false,
             randomize: true
         }).on('jg.complete', function () {
-            $(this).find('a').colorbox({
+            $(this).find('.item>a').colorbox({
                 rel: 'gallery',
                 maxWidth: '80%',
                 maxHeight: '80%',
