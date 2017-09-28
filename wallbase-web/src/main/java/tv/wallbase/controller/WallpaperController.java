@@ -13,6 +13,8 @@ import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 
 /**
+ * 高清壁纸详情页面
+ *
  * @author Administrator
  */
 @Controller("wallpaperController")
@@ -41,7 +43,7 @@ public class WallpaperController {
 //        model.addAttribute("tagString", tagString);
         //model.addAttribute("colors", colors);
 
-        return "/portal/wallpaper";
+        return "/wallpaper";
 
     }
 }
