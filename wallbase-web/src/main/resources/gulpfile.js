@@ -57,8 +57,9 @@ gulp.task("uglify", function () {
             './static/plugins/vegas/vegas.js',
             './static/plugins/lazyload/jquery.lazyload.min.js',
             './static/plugins/colorbox/jquery.colorbox-min.js',
-            './static/plugins/justifiedGallery/js/jquery.justifiedGallery.js',
             './static/plugins/slimscroll/jquery.slimscroll.min.js',
+            './static/plugins/justifiedGallery/js/jquery.justifiedGallery.js',
+            './static/plugins/infinite-scroll/jquery.infinitescroll.js',
         ]).pipe(concat('app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./static/build-' + pkg.version + '/js'));

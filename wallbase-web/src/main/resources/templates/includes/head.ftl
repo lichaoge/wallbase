@@ -34,6 +34,7 @@
 <script src="/plugins/lazyload/jquery.lazyload.min.js"></script>
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/plugins/justifiedGallery/js/jquery.justifiedGallery.js"></script>
+<script src="/plugins/infinite-scroll/jquery.infinitescroll.js"></script>
 <script src="/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <script src="/js/app.plugin.js"></script>

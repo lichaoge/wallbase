@@ -838,7 +838,7 @@
           imagesToLoad = true;
 
           // Spinner start
-          if (!that.isSpinnerActive()) that.startLoadingSpinnerAnimation();
+          //if (!that.isSpinnerActive()) that.startLoadingSpinnerAnimation();
 
           that.onImageEvent(imageSrc, function (loadImg) { // image loaded
             $entry.data('jg.width', loadImg.width);

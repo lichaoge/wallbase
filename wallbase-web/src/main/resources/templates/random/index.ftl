@@ -14,6 +14,10 @@
             <div class="item">
                 <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
                     <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
+                    <div class="caption">
+                        <div class="m-b"><a href="/wallpaper/${wallpaper.id?c}" class="b-b b-info h4 text-u-c text-lt">沁园春.雪</a></div>
+                        <samll class="hidden-xs text-md font-bold">北国风光千里冰封万里雪飘</samll>
+                    </div>
                 </a>
             </div>
         </#list>
@@ -30,35 +34,4 @@
     </footer>
 </section>
 </body>
-<script src="/plugins/infinite-scroll/jquery.infinitescroll.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#waterfall').infinitescroll({
-            navSelector: "#navigation", //导航的选择器，会被隐藏
-            nextSelector: "#navigation a", //包含下一页链接的选择器
-            itemSelector: ".item", //你将要取回的选项(内容块)
-            debug: true, //启用调试信息
-            animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-            extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
-            bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-        <#--maxPage: ${pages.totalPages},//公有多少页-->
-            errorCallback: function () {
-                alert('error');
-            }, //当出错的时候，比如404页面的时候执行的函数
-            localMode: true, //是否允许载入具有相同函数的页面，默认为false
-            dataType: 'html'//可以是json
-//            loading: {
-//                msgText: "",
-//                finishedMsg: '没有新数据了...',
-//                img: "/images/loading.gif",
-//                selector: '.loading'
-//            }
-        }, function (newElems) {
-            //程序执行完的回调函数
-            var $newElements = $(newElems);
-            $('#waterfall').append($newElements);
-            $('#waterfall').justifiedGallery('norewind');
-        });
-    });
-</script>
 </html>
