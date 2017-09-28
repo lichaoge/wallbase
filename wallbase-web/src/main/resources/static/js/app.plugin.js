@@ -25,12 +25,12 @@
 
 
         //背景图片
-        $('body').vegas({
-            timer: false,
-            slides: [
-                {src: '/images/background1.jpg'}
-            ]
-        });
+        // $('body').vegas({
+        //     timer: false,
+        //     slides: [
+        //         {src: '/images/background1.jpg'}
+        //     ]
+        // });
 
         //图片延时加载  //当图片没加载完显示加载图标和默认图片
         $("img[data-provider=lazyload]").lazyload({
