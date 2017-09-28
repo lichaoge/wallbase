@@ -48,27 +48,32 @@
 <script src="/plugins/guillotine/js/jquery.guillotine.js"></script>
 <script>
     $(document).ready(function () {
-        var picture = $('#sample_picture').guillotine();
-        picture.guillotine('fit');
+        var picture;
+        $('#sample_picture').click(function () {
+            if(!picture){
+                picture = $('#sample_picture').guillotine();
+                picture.guillotine('fit');
 
-        $('#rotate_left').click(function () {
-            picture.guillotine('rotateLeft');
-        });
+                $('#rotate_left').click(function () {
+                    picture.guillotine('rotateLeft');
+                });
 
-        $('#rotate_right').click(function () {
-            picture.guillotine('rotateRight');
-        });
+                $('#rotate_right').click(function () {
+                    picture.guillotine('rotateRight');
+                });
 
-        $('#fit').click(function () {
-            picture.guillotine('fit');
-        });
+                $('#fit').click(function () {
+                    picture.guillotine('fit');
+                });
 
-        $('#zoom_in').click(function () {
-            picture.guillotine('zoomIn');
-        });
+                $('#zoom_in').click(function () {
+                    picture.guillotine('zoomIn');
+                });
 
-        $('#zoom_out').click(function () {
-            picture.guillotine('zoomOut');
+                $('#zoom_out').click(function () {
+                    picture.guillotine('zoomOut');
+                });
+            }
         });
     });
 </script>
