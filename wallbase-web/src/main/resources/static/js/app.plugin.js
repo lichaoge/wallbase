@@ -44,6 +44,7 @@
             lastRow: 'justify',
             rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
             margins: 3,
+            cssAnimation: true,
             waitThumbnailsLoad: false,
             randomize: true
         }).on('jg.complete', function () {
@@ -71,14 +72,14 @@
             navSelector: "#navigation", //导航的选择器，会被隐藏
             nextSelector: "#navigation a", //包含下一页链接的选择器
             itemSelector: ".item", //你将要取回的选项(内容块)
-            debug: true, //启用调试信息
+            //debug: true, //启用调试信息
             animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
             extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
             bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
             // maxPage: 10,//公有多少页-->
-            errorCallback: function () {
-                alert('error');
-            }, //当出错的时候，比如404页面的时候执行的函数
+            errorCallback: function (state) {
+                console.log("errorCallback state:" + state);
+            },
             localMode: false, //是否允许载入具有相同函数的页面，默认为false
             dataType: 'html',//可以是json
             loading: {
