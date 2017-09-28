@@ -110,7 +110,7 @@
         <if test="sorts!=null and sorts.size>0">
             <foreach collection="sorts" item="sort" open="order by " separator="," close=" ">
                 <if test="sort.property=='createTime'">
-                    create_time ${sort.direction},
+                    create_time ${sort.direction}
                 </if>
                 <if test="sort.property=='viewsCount'">
                     views_count ${sort.direction}
