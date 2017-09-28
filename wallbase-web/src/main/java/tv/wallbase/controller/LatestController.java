@@ -52,11 +52,11 @@ public class LatestController {
      * @return
      */
     @RequestMapping("/next")
-    public String infiniteScroll(int pages, Model model) {
-        Pageable pageable = new Pageable(pages, 24);
+    public String infiniteScroll(Integer page, Model model) {
+        Pageable pageable = new Pageable(page, 24);
         pageable.setSorts(Arrays.asList(new Sort("createTime", Sort.Direction.desc)));
-        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
-        model.addAttribute("list", page.getContent());
+        Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
+        model.addAttribute("list", pages.getContent());
 
         return "/latest/next";
     }

@@ -43,16 +43,16 @@ public class RandomController {
     /**
      * infiniteScroll
      *
-     * @param pages
+     * @param page
      * @param model
      * @return
      */
     @RequestMapping("/next")
-    public String infiniteScroll(Integer pages, Model model) {
-        Pageable pageable = new Pageable(pages, 24);
-        Page<Wallpaper> page = wallpaperService.findByPage(pageable);
+    public String infiniteScroll(Integer page, Model model) {
+        Pageable pageable = new Pageable(page, 24);
+        Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
 
-        model.addAttribute("list", page.getContent());
+        model.addAttribute("list", pages.getContent());
         return "/random/next";
     }
 }

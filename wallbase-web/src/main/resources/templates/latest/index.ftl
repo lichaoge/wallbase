@@ -10,7 +10,7 @@
 <section class="vbox">
     <section class="w-f-md">
         <section id="waterfall" class="scrollable">
-        <#list list as wallpaper>
+        <#list page.content as wallpaper>
             <div class="item">
                 <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
                     <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
@@ -26,7 +26,7 @@
         <div>
             <div class="loading text-center"></div>
             <div id="navigation">
-                <a href="/random/next?page=1"></a>
+                <a href="/latest/next?page=1"></a>
             </div>
         </div>
     </section>
