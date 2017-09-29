@@ -42,16 +42,23 @@ public class WallhavenProcessor implements PageProcessor {
                 String wallpaperId = figure.xpath("//figure/@data-wallpaper-id").get();
                 logger.info("data-wallpaper-id {} ", wallpaperId);
                 //需要判断是否有该ID 如果有则不抓取 TODO..
-
-                page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId));
+                page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId).putExtra("wallpaperId", wallpaperId));
             }
+            return;
         }
 
         //如果是详情 解析页面数据、
         //https://alpha.wallhaven.cc/wallpaper/51351
         if (page.getUrl().regex(WALLPAPER_URL).match()) {
             Wallpaper wallpaper = new Wallpaper();
+
+            String wallpaperId = (String) page.getRequest().getExtra("wallpaperId");
+
+            wallpaper.setTitle(wallpaperId);
             //1 原图地址
+            //wallpapers.wallhaven.cc/wallpapers/full/wallhaven-80626.jpg
+            String imageUrl = page.getHtml().xpath("//section[@id='showcase']/div/img[@id='wallpaper']/@src").get();
+            wallpaper.setImageUrl(imageUrl);
 
             //2 类别
             List<Selectable> dl = page.getHtml().xpath("//div/[@data-storage-id='showcase-info']/dl/dd/text()").nodes();
@@ -94,8 +101,11 @@ public class WallhavenProcessor implements PageProcessor {
                 tags.add(tag);
             }
             wallpaper.setTags(tags);
+            wallpaper.setUserId(1);
 
             //放到pipeline中处理
+            page.putField("wallpaperId", wallpaperId);
+            page.putField("wallpaperUrl", page.getUrl());
             page.putField("wallpaper", wallpaper);
         }
 
@@ -109,6 +119,6 @@ public class WallhavenProcessor implements PageProcessor {
 
     public static void main(String[] args) {
         //Spider.create(new WallpaperProcessor()).addUrl("https://alpha.wallhaven.cc/random?page=2").run();
-        Spider.create(new WallhavenProcessor()).addUrl("https://alpha.wallhaven.cc/wallpaper/51351").run();
+        Spider.create(new WallhavenProcessor()).addRequest(new Request("https://alpha.wallhaven.cc/wallpaper/51351").putExtra("wallpaperId", "51351")).run();
     }
 }

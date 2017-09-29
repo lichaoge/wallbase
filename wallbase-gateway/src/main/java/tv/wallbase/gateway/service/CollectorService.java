@@ -2,6 +2,7 @@ package tv.wallbase.gateway.service;
 
 import tv.wallbase.gateway.enums.CollectorType;
 import tv.wallbase.gateway.model.Collector;
+import tv.wallbase.gateway.model.Wallpaper;
 
 /**
  * 图片采集
@@ -10,11 +11,11 @@ import tv.wallbase.gateway.model.Collector;
 public interface CollectorService {
 
     /**
-     * 保存
+     * 保存 这是在抓去详情页面后的数据，所以一起把壁纸信息一起保存
      *
      * @param entity
      */
-    public void save(Collector entity);
+    public void save(Collector entity, Wallpaper wallpaper);
 
 
     /**

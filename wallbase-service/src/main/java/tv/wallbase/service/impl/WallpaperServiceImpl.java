@@ -3,6 +3,7 @@ package tv.wallbase.service.impl;
 import org.springframework.transaction.annotation.Transactional;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.gateway.model.Tag;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
 import tv.wallbase.mapper.WallpaperMapper;
@@ -29,6 +30,10 @@ public class WallpaperServiceImpl implements WallpaperService {
     @Override
     @Transactional
     public void save(Wallpaper wallpaper) {
+        //处理该图片TAG信息
+        List<Tag> tags = wallpaper.getTags();
+        //TODO 先判断TAG是否存在
+        //在关联wallpaper和tag关系
         wallpaperMapper.insert(wallpaper);
     }
 

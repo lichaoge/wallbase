@@ -16,6 +16,7 @@
 
     <!-- 根logger的设置-->
     <root>
+        <level value="INFO"/>
         <appender-ref ref="myConsole"/>
     </root>
 </log4j:configuration>
