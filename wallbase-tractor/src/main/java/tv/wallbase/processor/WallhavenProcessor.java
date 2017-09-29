@@ -133,7 +133,11 @@ public class WallhavenProcessor implements PageProcessor {
 
     @Override
     public Site getSite() {
-        Site site = Site.me().setRetryTimes(3).setSleepTime(1000);
+        Site site = Site.me()
+                .setDomain("alpha.wallhaven.cc")
+                .setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+                .setRetryTimes(3)
+                .setSleepTime(1000);
         return site;
     }
 
