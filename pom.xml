@@ -25,6 +25,7 @@
         <module>wallbase-gateway</module>
         <module>wallbase-mapper</module>
         <module>wallbase-service</module>
+         <module>wallbase-tractor</module>
         <module>wallbase-web</module>
     </modules>
 
