@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tv.wallbase.common.rest.ResponseData;
 import tv.wallbase.pipeline.WallhavenPipeline;
 import tv.wallbase.processor.WallhavenProcessor;
+import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页入口
@@ -52,11 +55,13 @@ public class HomeController {
      */
     @ResponseBody
     @RequestMapping("/wallhaven")
-    public ResponseData wallhaven() {
+    public ResponseData wallhaven(Integer page) {
+        Spider spider = Spider.create(wallhavenProcessor).addPipeline(wallhavenPipeline);
 
-        Spider.create(wallhavenProcessor)
-                .addPipeline(wallhavenPipeline)
-                .addUrl("https://alpha.wallhaven.cc/random?page=2").run();
+        for (int i = 1; i <= page; i++) {
+            spider.addRequest(new Request("https://alpha.wallhaven.cc/random?page=" + i));
+        }
+        spider.run();
 
         return ResponseData.success();
     }
