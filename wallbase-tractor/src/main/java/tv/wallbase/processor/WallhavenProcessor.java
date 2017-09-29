@@ -30,7 +30,7 @@ public class WallhavenProcessor implements PageProcessor {
 
     final Logger logger = LoggerFactory.getLogger(WallhavenProcessor.class);
 
-    private static final String PAGE_URL = "^https\\://alpha\\.wallhaven\\.cc/random\\?page";
+    private static final String PAGE_URL = "^https\\://alpha\\.wallhaven\\.cc/latest\\?page";
     private static final String WALLPAPER_URL = "^https\\://alpha\\.wallhaven\\.cc/wallpaper/";
 
     @Resource
@@ -41,14 +41,16 @@ public class WallhavenProcessor implements PageProcessor {
 
         //如果分页 就把页面加入详情页面继续抓去
         if (page.getUrl().regex(PAGE_URL).match()) {
+            logger.info("page url {} ", page.getUrl());
             List<Selectable> figureElements = page.getHtml().xpath("//section/ul/li").nodes();
             for (Selectable figure : figureElements) {
                 //logger.info("##{} ", figure);
                 String wallpaperId = figure.xpath("//figure/@data-wallpaper-id").get();
-                logger.info("data-wallpaper-id {} ", wallpaperId);
                 //需要判断是否有该ID 如果有则不抓取 TODO..
                 if (!collectorService.exist(CollectorType.WALLHAVEN, wallpaperId)) {
                     page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId).putExtra("wallpaperId", wallpaperId));
+                } else {
+                    logger.info("wallpaperId exist {} ", wallpaperId);
                 }
             }
         }
