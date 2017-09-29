@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/wallbase/wallbase.svg?branch=master)](https://travis-ci.org/wallbase/wallbase)
-# databook
+# New Wallbase wallpaper share web site.
 ###### 主要使用maven和spring boot
 >运行说明
 * wallbase-web是spring-boot程序，只需要在目录下执行
