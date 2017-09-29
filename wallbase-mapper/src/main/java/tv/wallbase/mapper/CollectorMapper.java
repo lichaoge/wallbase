@@ -2,6 +2,7 @@ package tv.wallbase.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import tv.wallbase.gateway.enums.CollectorType;
 import tv.wallbase.gateway.model.Collector;
 
 /**
@@ -25,6 +26,6 @@ public interface CollectorMapper {
      * @param name
      * @return
      */
-    Collector findBySiteAndName(@Param("site") String site, @Param("name") String name);
+    Collector findBySiteAndName(@Param("site") CollectorType site, @Param("name") String name);
 
 }

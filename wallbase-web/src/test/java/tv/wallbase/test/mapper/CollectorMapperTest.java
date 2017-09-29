@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tv.wallbase.gateway.enums.CollectorType;
 import tv.wallbase.gateway.model.Collector;
 import tv.wallbase.mapper.CollectorMapper;
 
@@ -23,13 +24,13 @@ public class CollectorMapperTest {
 
     @Test
     public void insert() {
-        Collector collector = new Collector("wallhaven", "1111111", "https://alpha.wallhaven.cc/");
+        Collector collector = new Collector(CollectorType.WALLHAVEN, "1111111", "https://alpha.wallhaven.cc/");
         collectorMapper.insert(collector);
     }
 
     @Test
     public void findBySiteAndName() {
-        Collector collector = collectorMapper.findBySiteAndName("wallhaven", "1111111");
+        Collector collector = collectorMapper.findBySiteAndName(CollectorType.WALLHAVEN, "1111111");
         logger.info("{}", collector);
     }
 }

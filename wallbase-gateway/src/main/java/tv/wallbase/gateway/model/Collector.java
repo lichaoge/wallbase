@@ -3,6 +3,7 @@ package tv.wallbase.gateway.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import tv.wallbase.gateway.enums.CollectorType;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -24,7 +25,7 @@ public class Collector implements Serializable {
 
     @Setter
     @Getter
-    private String site;
+    private CollectorType site;
 
     @Setter
     @Getter
@@ -46,7 +47,7 @@ public class Collector implements Serializable {
     public Collector() {
     }
 
-    public Collector( String site, String name,String url) {
+    public Collector(CollectorType site, String name, String url) {
         this.site = site;
         this.name = name;
         this.url = url;

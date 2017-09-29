@@ -20,12 +20,12 @@ import java.util.List;
 
 /**
  * 规则 先解析分页页面 ，然后根据分页页面的URL 去抓去wallpaper 的详情页面，然后把需要的数据解析出来
- * Created by wangkun23 on 2017/8/18.
+ * Created by wangkun23 on 2017/9/29.
  */
 @Component
-public class WallpaperProcessor implements PageProcessor {
+public class WallhavenProcessor implements PageProcessor {
 
-    final Logger logger = LoggerFactory.getLogger(WallpaperProcessor.class);
+    final Logger logger = LoggerFactory.getLogger(WallhavenProcessor.class);
 
     private static final String PAGE_URL = "^https\\://alpha\\.wallhaven\\.cc/random\\?page";
     private static final String WALLPAPER_URL = "^https\\://alpha\\.wallhaven\\.cc/wallpaper/";
@@ -41,8 +41,9 @@ public class WallpaperProcessor implements PageProcessor {
                 //logger.info("##{} ", figure);
                 String wallpaperId = figure.xpath("//figure/@data-wallpaper-id").get();
                 logger.info("data-wallpaper-id {} ", wallpaperId);
-                page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId));
+                //需要判断是否有该ID 如果有则不抓取 TODO..
 
+                page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId));
             }
         }
 
@@ -94,6 +95,8 @@ public class WallpaperProcessor implements PageProcessor {
             }
             wallpaper.setTags(tags);
 
+            //放到pipeline中处理
+            page.putField("wallpaper", wallpaper);
         }
 
     }
@@ -106,6 +109,6 @@ public class WallpaperProcessor implements PageProcessor {
 
     public static void main(String[] args) {
         //Spider.create(new WallpaperProcessor()).addUrl("https://alpha.wallhaven.cc/random?page=2").run();
-        Spider.create(new WallpaperProcessor()).addUrl("https://alpha.wallhaven.cc/wallpaper/51351").run();
+        Spider.create(new WallhavenProcessor()).addUrl("https://alpha.wallhaven.cc/wallpaper/51351").run();
     }
 }
