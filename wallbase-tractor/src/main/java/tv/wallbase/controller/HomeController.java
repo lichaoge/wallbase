@@ -59,7 +59,7 @@ public class HomeController {
         Spider spider = Spider.create(wallhavenProcessor).addPipeline(wallhavenPipeline);
 
         for (int i = 1; i <= page; i++) {
-            spider.addRequest(new Request("https://alpha.wallhaven.cc/random?page=" + i));
+            spider.addRequest(new Request("https://alpha.wallhaven.cc/latest?page=" + i));
         }
         spider.thread(50).run();
 
