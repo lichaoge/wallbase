@@ -61,7 +61,7 @@ public class HomeController {
         for (int i = 1; i <= page; i++) {
             spider.addRequest(new Request("https://alpha.wallhaven.cc/random?page=" + i));
         }
-        spider.run();
+        spider.thread(50).run();
 
         return ResponseData.success();
     }
