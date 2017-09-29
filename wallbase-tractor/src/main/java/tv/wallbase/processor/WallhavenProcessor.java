@@ -5,9 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import tv.wallbase.gateway.enums.Category;
+import tv.wallbase.gateway.enums.CollectorType;
 import tv.wallbase.gateway.enums.Purity;
 import tv.wallbase.gateway.model.Tag;
 import tv.wallbase.gateway.model.Wallpaper;
+import tv.wallbase.gateway.service.CollectorService;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -15,6 +17,7 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,8 @@ public class WallhavenProcessor implements PageProcessor {
     private static final String PAGE_URL = "^https\\://alpha\\.wallhaven\\.cc/random\\?page";
     private static final String WALLPAPER_URL = "^https\\://alpha\\.wallhaven\\.cc/wallpaper/";
 
+    @Resource
+    CollectorService collectorService;
 
     @Override
     public void process(Page page) {
@@ -42,9 +47,10 @@ public class WallhavenProcessor implements PageProcessor {
                 String wallpaperId = figure.xpath("//figure/@data-wallpaper-id").get();
                 logger.info("data-wallpaper-id {} ", wallpaperId);
                 //需要判断是否有该ID 如果有则不抓取 TODO..
-                page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId).putExtra("wallpaperId", wallpaperId));
+                if (!collectorService.exist(CollectorType.WALLHAVEN, wallpaperId)) {
+                    page.addTargetRequest(new Request("https://alpha.wallhaven.cc/wallpaper/" + wallpaperId).putExtra("wallpaperId", wallpaperId));
+                }
             }
-            return;
         }
 
         //如果是详情 解析页面数据、
@@ -80,32 +86,44 @@ public class WallhavenProcessor implements PageProcessor {
                 String tagName = li.xpath("//li/a[@class='tagname']/text()").get();
 
                 //region purity
-                String liClassString = li.xpath("//li/@class").get();
-                Purity purity = liClassString.contains("tag-sfw") ? Purity.SFW
-                        : liClassString.contains("tag-sketchy") ? Purity.SKETCHY
-                        : liClassString.contains("tag-nsfw") ? Purity.NSFW
-                        : null;
-                if (purity == null) {
-                    throw new IllegalArgumentException("Could not parse purity of wallpaper thumbnail");
-                }
-
+                //String liClassString = li.xpath("//li/@class").get();
+//                Purity purity = liClassString.contains("tag-sfw") ? Purity.SFW
+//                        : liClassString.contains("tag-sketchy") ? Purity.SKETCHY
+//                        : liClassString.contains("tag-nsfw") ? Purity.NSFW
+//                        : null;
+//                if (purity == null) {
+//                    throw new IllegalArgumentException("Could not parse purity of wallpaper thumbnail");
+//                }
                 logger.info("tagId {} ", tagId);
                 logger.info("tagName {} ", tagName);
-
 
                 Tag tag = new Tag();
                 tag.setId(Integer.valueOf(tagId));
                 tag.setName(tagName);
-                tag.setPurity(purity);
+                //tag.setPurity(purity);
 
                 tags.add(tag);
             }
             wallpaper.setTags(tags);
+
+
+            //4 纯净度
+            String purityString = page.getHtml().xpath("//form[@id='wallpaper-purity-form']/label/text()").get();
+            Purity purity = purityString.contains("SFW") ? Purity.SFW
+                    : purityString.contains("SKETCHY") ? Purity.SKETCHY
+                    : purityString.contains("NSFW") ? Purity.NSFW
+                    : null;
+            if (purity == null) {
+                throw new IllegalArgumentException("Could not parse purity of wallpaper");
+            }
+            wallpaper.setPurity(purity);
+
+            //默认创建用户
             wallpaper.setUserId(1);
 
             //放到pipeline中处理
             page.putField("wallpaperId", wallpaperId);
-            page.putField("wallpaperUrl", page.getUrl());
+            page.putField("wallpaperUrl", page.getUrl().toString());
             page.putField("wallpaper", wallpaper);
         }
 

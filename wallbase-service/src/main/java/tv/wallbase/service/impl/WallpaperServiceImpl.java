@@ -3,8 +3,10 @@ package tv.wallbase.service.impl;
 import org.springframework.transaction.annotation.Transactional;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
+import tv.wallbase.gateway.enums.WallpaperStatus;
 import tv.wallbase.gateway.model.Tag;
 import tv.wallbase.gateway.model.Wallpaper;
+import tv.wallbase.gateway.service.SequenceService;
 import tv.wallbase.gateway.service.WallpaperService;
 import tv.wallbase.mapper.WallpaperMapper;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class WallpaperServiceImpl implements WallpaperService {
     @Resource
     WallpaperMapper wallpaperMapper;
 
+    @Resource
+    private SequenceService sequenceService;
+
     /**
      * 保存
      *
@@ -30,10 +35,17 @@ public class WallpaperServiceImpl implements WallpaperService {
     @Override
     @Transactional
     public void save(Wallpaper wallpaper) {
+        String wallpaperNo = sequenceService.generateWallpaperNo();
         //处理该图片TAG信息
         List<Tag> tags = wallpaper.getTags();
         //TODO 先判断TAG是否存在
         //在关联wallpaper和tag关系
+
+        wallpaper.setId(new Integer(wallpaperNo));
+        wallpaper.setViewsCount(0);
+        wallpaper.setFavoritesCount(0);
+        wallpaper.setStatus(WallpaperStatus.UNASSIGNED);
+
         wallpaperMapper.insert(wallpaper);
     }
 

@@ -30,11 +30,12 @@ public class WallhavenPipeline implements Pipeline {
     public void process(ResultItems resultItems, Task task) {
         String wallpaperId = resultItems.get("wallpaperId");
         String wallpaperUrl = resultItems.get("wallpaperUrl");
-
         Wallpaper wallpaper = resultItems.get("wallpaper");
 
-        //把该记录放到collector表中
-        Collector collector = new Collector(CollectorType.WALLHAVEN, wallpaperId, wallpaperUrl);
-        collectorService.save(collector, wallpaper);
+        if (wallpaper != null) {
+            //把该记录放到collector表中
+            Collector collector = new Collector(CollectorType.WALLHAVEN, wallpaperId, wallpaperUrl);
+            collectorService.save(collector, wallpaper);
+        }
     }
 }

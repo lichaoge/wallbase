@@ -18,7 +18,7 @@
     insert into tb_wallpaper
      (
       id, title,category, purity,
-      size, views_count, favorites_count, 
+      size,width,height, views_count, favorites_count,
       thumb_url, image_url, user_id,
       status,
        create_time, update_time

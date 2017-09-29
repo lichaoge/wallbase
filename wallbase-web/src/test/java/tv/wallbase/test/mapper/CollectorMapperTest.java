@@ -30,7 +30,7 @@ public class CollectorMapperTest {
 
     @Test
     public void findBySiteAndName() {
-        Collector collector = collectorMapper.findBySiteAndName(CollectorType.WALLHAVEN, "1111111");
+        Collector collector = collectorMapper.findBySiteAndName(CollectorType.WALLHAVEN, "54296");
         logger.info("{}", collector);
     }
 }
