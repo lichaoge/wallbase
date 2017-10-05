@@ -6,7 +6,11 @@ import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import tv.wallbase.gateway.enums.WallpaperStatus;
+import tv.wallbase.gateway.model.Wallpaper;
+import tv.wallbase.gateway.service.WallpaperService;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
@@ -18,31 +22,52 @@ import java.io.IOException;
  */
 @Component
 public class WallpaperDownloader {
+
     final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Resource
     OSSClient ossClient;
+
+    @Resource
+    WallpaperService wallpaperService;
 
     /**
      * 下载图片并上传到阿里云
      *
-     * @param url
      * @throws IOException
      */
-    public String download(String url, String wallpaperId) throws IOException {
+    @Transactional
+    public void download(Integer wallpaperId) {
+        logger.info("download wallpaperId {}", wallpaperId);
+        Wallpaper wallpaper = wallpaperService.findDetails(wallpaperId);
+        if (wallpaper == null) {
+            throw new IllegalArgumentException("wallpaperId " + wallpaperId + " not exist ");
+        }
+        String url = wallpaper.getImageUrl();
         String filename = StringUtils.getFilename(url);
-        Connection.Response response = Jsoup.connect(url)
-                .ignoreContentType(true)
-                .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36")
-                .execute();
-        if (response.statusCode() == 200) {
-            String filenameExtension = StringUtils.getFilenameExtension(filename);
-            String fileId = "wallbase-" + wallpaperId.concat(".") + filenameExtension;
-            //上传到阿里云
-            ossClient.putObject("wallbasetv", fileId, new ByteArrayInputStream(response.bodyAsBytes()));
-            return fileId;
-        } else {
-            logger.info("error {}", response.statusCode());
-            return null;
+        try {
+            Connection.Response response = Jsoup.connect(url)
+                    .ignoreContentType(true)
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36")
+                    .execute();
+
+            if (response.statusCode() == 200) {
+                String filenameExtension = StringUtils.getFilenameExtension(filename);
+                String fileId = "wallbase-" + wallpaperId.toString().concat(".") + filenameExtension;
+                //上传到阿里云
+                ossClient.putObject("wallbasetv", fileId, new ByteArrayInputStream(response.bodyAsBytes()));
+
+                Wallpaper update = new Wallpaper();
+                update.setId(wallpaperId);
+                update.setThumbUrl(fileId);
+                update.setStatus(WallpaperStatus.ASSIGNED);
+
+                wallpaperService.update(update);
+            } else {
+                logger.info("error {}", response.statusCode());
+            }
+        } catch (IOException e) {
+            logger.info("error {}", wallpaperId);
         }
     }
 }
