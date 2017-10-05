@@ -41,7 +41,7 @@
         //图片自动调节插件
         $("#waterfall").justifiedGallery({
             rowHeight: 200,
-            lastRow: 'justify',
+            //lastRow: 'justify',
             rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
             margins: 3,
             cssAnimation: true,
