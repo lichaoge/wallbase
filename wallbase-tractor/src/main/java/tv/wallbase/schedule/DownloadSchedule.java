@@ -11,10 +11,12 @@ import tv.wallbase.downloader.WallpaperDownloader;
 import tv.wallbase.gateway.enums.WallpaperStatus;
 import tv.wallbase.gateway.model.Wallpaper;
 import tv.wallbase.gateway.service.WallpaperService;
+import tv.wallbase.task.DownloadThread;
 
 import javax.annotation.Resource;
 
 /**
+ * 每5秒钟执行下载任务拉取
  * Created by wangkun23 on 2017/9/29.
  */
 @Component
@@ -44,12 +46,7 @@ public class DownloadSchedule {
             logger.info("pages {}", pages.getContent().size());
 
             for (Wallpaper wallpaper : pages.getContent()) {
-                threadPoolTaskExecutor.submit(new Runnable() {
-                    @Override
-                    public void run() {
-                        downloader.download(wallpaper.getId());
-                    }
-                });
+                threadPoolTaskExecutor.submit(new DownloadThread(downloader, wallpaper.getId()));
             }
             page++;
         }
