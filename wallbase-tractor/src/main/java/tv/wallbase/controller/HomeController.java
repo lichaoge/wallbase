@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import tv.wallbase.common.rest.ResponseData;
+import tv.wallbase.downloader.WallpaperDownloader;
 import tv.wallbase.pipeline.WallhavenPipeline;
 import tv.wallbase.processor.WallhavenProcessor;
 import us.codecraft.webmagic.Request;
@@ -36,6 +37,8 @@ public class HomeController {
     @Resource
     private WallhavenPipeline wallhavenPipeline;
 
+    @Resource
+    WallpaperDownloader wallpaperDownloader;
     /**
      * 首页
      *
@@ -44,6 +47,7 @@ public class HomeController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String displayIndex(Model model) {
+        wallpaperDownloader.download(10018440);
         return "/index";
     }
 

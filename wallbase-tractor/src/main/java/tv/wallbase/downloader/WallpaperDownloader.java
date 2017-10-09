@@ -43,7 +43,12 @@ public class WallpaperDownloader {
         if (wallpaper == null) {
             throw new IllegalArgumentException("wallpaperId " + wallpaperId + " not exist ");
         }
-        String url = wallpaper.getImageUrl();
+
+        /**
+         * //wallpapers.wallhaven.cc/wallpapers/full/wallhaven-569415.jpg
+         * https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-569415.jpg
+         ***/
+        String url = "https:".concat(wallpaper.getImageUrl());
         String filename = StringUtils.getFilename(url);
         try {
             Connection.Response response = Jsoup.connect(url)
@@ -62,6 +67,7 @@ public class WallpaperDownloader {
                 update.setThumbUrl(fileId);
                 update.setStatus(WallpaperStatus.ASSIGNED);
 
+                logger.info("upload fileId {}", fileId);
                 wallpaperService.update(update);
             } else {
                 logger.info("error {}", response.statusCode());
