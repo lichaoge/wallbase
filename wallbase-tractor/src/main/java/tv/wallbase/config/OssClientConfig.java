@@ -18,7 +18,8 @@ public class OssClientConfig {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
-    String endpoint = "http://oss-cn-beijing.aliyuncs.com";
+    @Value("${aliyun.oss.endpoint}")
+    String endpoint;
 
     @Value("${aliyun.oss.accessKeyId}")
     String accessKeyId;
