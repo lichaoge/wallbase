@@ -35,7 +35,7 @@ public class DownloadSchedule {
     @Resource
     WallpaperService wallpaperService;
 
-    //@Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void downloadTask() {
         if (threadPoolTaskExecutor.getActiveCount() < 50) {
             Pageable pageable = new Pageable(page, 24);
