@@ -99,7 +99,7 @@ public class OssServiceImpl implements OssService {
     public void updateWallpaperMetadataInfo(Wallpaper wallpaper) {
         // 图片信息
         String style = "image/info";
-        GetObjectRequest request = new GetObjectRequest(bucketName, wallpaper.getImageUrl());
+        GetObjectRequest request = new GetObjectRequest(bucketName, wallpaper.getThumbUrl());
         request.setProcess(style);
         OSSObject ossObject = ossClient.getObject(request);
 

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tv.wallbase.common.rest.Filter;
 import tv.wallbase.common.rest.Page;
 import tv.wallbase.common.rest.Pageable;
 import tv.wallbase.gateway.model.Wallpaper;
@@ -13,6 +14,7 @@ import tv.wallbase.gateway.service.OssService;
 import tv.wallbase.gateway.service.WallpaperService;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
  * Created by wangkun23 on 2017/9/24.
@@ -29,9 +31,10 @@ public class OssServiceTest {
     @Resource
     WallpaperService wallpaperService;
 
-    //@Test
+    @Test
     public void updateWallpaperMetadataInfo() {
         Pageable pageable = new Pageable(1, 1000);
+        pageable.setFilters(Arrays.asList(new Filter("size", Filter.Operator.eq, "null")));
         Page<Wallpaper> page = wallpaperService.findByPage(pageable);
 
         for (Wallpaper wallpaper : page.getContent()) {

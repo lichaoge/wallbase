@@ -90,20 +90,12 @@
         <if test="filters!=null and filters.size>0">
             <where>
                 <foreach collection="filters" index="index" item="filter" separator=" ">
-                    <choose>
-                        <when test="filter.operator.key=='in'">
-                            ${filter.property} ${filter.operator.key}
-                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator=","
-                                     close=")">
-                                ${value}
-                            </foreach>
-                        </when>
-                        <otherwise>
-                            <foreach collection="filters" index="index" item="filter" open="" separator="and" close="">
-                                ${filter.property} ${filter.operator.key} #{filter.value}
-                            </foreach>
-                        </otherwise>
-                    </choose>
+                    <if test="filter.property=='status'">
+                        status = #{filter.value}
+                    </if>
+                    <if test="filter.property=='size'">
+                        size is null
+                    </if>
                 </foreach>
             </where>
         </if>
@@ -128,20 +120,12 @@
         <if test="filters!=null and filters.size>0">
             <where>
                 <foreach collection="filters" index="index" item="filter" separator=" ">
-                    <choose>
-                        <when test="filter.operator.key=='in'">
-                            ${filter.property} ${filter.operator.key}
-                            <foreach collection="filter.value" index="valueIndex" item="value" open="(" separator=","
-                                     close=")">
-                                ${value}
-                            </foreach>
-                        </when>
-                        <otherwise>
-                            <foreach collection="filters" index="index" item="filter" open="" separator="and" close="">
-                                ${filter.property} ${filter.operator.key} #{filter.value}
-                            </foreach>
-                        </otherwise>
-                    </choose>
+                    <if test="filter.property=='status'">
+                        status = #{filter.value}
+                    </if>
+                    <if test="filter.property=='size'">
+                        size is null
+                    </if>
                 </foreach>
             </where>
         </if>

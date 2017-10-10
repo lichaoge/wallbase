@@ -53,6 +53,8 @@ public class WallpaperDownloader {
         try {
             Connection.Response response = Jsoup.connect(url)
                     .ignoreContentType(true)
+                    .maxBodySize(0)//默认是1024 * 1024 =1M
+                    .timeout(600000)
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36")
                     .execute();
 
