@@ -14,12 +14,12 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
             <h4>联系我</h4>
             <p>
-                未知(X)<br>
+                王坤(图形控制44)<br>
                 北京市 中国<br>
-                版权2015©lockbur.com<br>
-                京ICP备15054053号<br>
+                版权2017-2017©wallbase.tv<br>
+                京ICP备15054053号-2<br>
                 电话: 13661014724<br>
-                Email: 2900196090#qq.com OR wangko27#gmail.com<br>
+                Email: wallbase@lockbur.com<br>
             </p>
         </div>
         <div class="col-xs-6 col-sm-4 col-md-3">
@@ -33,8 +33,8 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
             <h4>友情链接</h4>
             <p>
-                <a href="http://github.com/lockbur" target="_blank">
-                    <i class="fa fa-github"></i> GitHub Fork Me
+                <a href="http://github.com/wallbase" target="_blank">
+                    <i class="fa fa-github"></i> GitHub
                 </a>
             </p>
             <p>

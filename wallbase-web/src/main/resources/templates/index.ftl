@@ -2,7 +2,7 @@
 <html class="app">
 <head>
     <meta charset="utf-8"/>
-    <title>Lockbur - 更多壁纸，更多分享</title>
+    <title>wallbase - more wallpaper, more share</title>
     <meta property="qc:admins" content="001022565332526375"/>
     <meta property="wb:webmaster" content="b4ce7bb18f09c6bc"/>
     <meta name="baidu-site-verification" content="bB5uKKGWVi"/>
