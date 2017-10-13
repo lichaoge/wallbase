@@ -71,6 +71,12 @@ public class Wallpaper implements Serializable {
     @Getter
     private WallpaperStatus status;
 
+
+    @Setter
+    @Getter
+    /*是否删除*/
+    private Boolean deleted;
+
     @Setter
     @Getter
     private Date createTime;

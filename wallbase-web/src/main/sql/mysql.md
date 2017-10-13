@@ -69,4 +69,9 @@ CREATE TABLE `tb_sequence` (
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB COMMENT "流水号";
 
+
+```
+## 删除标志（create time 2017-10-13）
+```sql
+ALTER TABLE tb_wallpaper ADD COLUMN deleted TINYINT (4) DEFAULT '0' COMMENT '删除标记' AFTER STATUS;
 ```

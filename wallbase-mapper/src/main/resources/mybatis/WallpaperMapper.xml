@@ -4,7 +4,7 @@
 
     <sql id="Base_Column_List">
     id, title,category, purity, size,width,height, views_count, favorites_count, thumb_url, image_url,
-    user_id, status, create_time, update_time
+    user_id, status, deleted, create_time, update_time
   </sql>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="Wallpaper">
@@ -70,6 +70,9 @@
             <if test="status != null">
                 status = #{status,jdbcType=VARCHAR},
             </if>
+            <if test="deleted != null">
+                deleted = #{deleted},
+            </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
@@ -82,13 +85,9 @@
 
 
     <!--分页使用 findByPage-->
-    <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper"
-            parameterType="tv.wallbase.common.rest.Pageable">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM tb_wallpaper
-        <if test="filters!=null and filters.size>0">
-            <where>
+    <sql id="findByPageWhere">
+        <where>
+            <if test="filters!=null and filters.size>0">
                 <foreach collection="filters" index="index" item="filter" separator=" ">
                     <if test="filter.property=='status'">
                         status = #{filter.value}
@@ -97,8 +96,16 @@
                         size is null
                     </if>
                 </foreach>
-            </where>
-        </if>
+            </if>
+            AND deleted=0
+        </where>
+    </sql>
+    <select id="findByPage" resultType="tv.wallbase.gateway.model.Wallpaper"
+            parameterType="tv.wallbase.common.rest.Pageable">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_wallpaper
+        <include refid="findByPageWhere"/>
         <if test="sorts!=null and sorts.size>0">
             <foreach collection="sorts" item="sort" open="order by " separator="," close=" ">
                 <if test="sort.property=='createTime'">
@@ -117,18 +124,7 @@
         SELECT
         count(id)
         FROM tb_wallpaper
-        <if test="filters!=null and filters.size>0">
-            <where>
-                <foreach collection="filters" index="index" item="filter" separator=" ">
-                    <if test="filter.property=='status'">
-                        status = #{filter.value}
-                    </if>
-                    <if test="filter.property=='size'">
-                        size is null
-                    </if>
-                </foreach>
-            </where>
-        </if>
+        <include refid="findByPageWhere"/>
     </select>
     <!--//END 分页使用 findByPage-->
 </mapper>
