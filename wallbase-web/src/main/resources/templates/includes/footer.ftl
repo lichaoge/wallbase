@@ -3,10 +3,10 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
             <h4>网站介绍</h4>
             <p>
-                <a href="/tags" target="_blank">标签</a><br>
-                <a href="/help" target="_blank">帮助中心</a><br>
-                <a href="/help/join" target="_blank">加入我们</a><br>
-                <a href="/help/changelog" target="_blank">更新日志</a><br>
+                <a href="#" target="_blank">标签</a><br>
+                <a href="#" target="_blank">帮助中心</a><br>
+                <a href="#" target="_blank">加入我们</a><br>
+                <a href="#" target="_blank">更新日志</a><br>
                 #路线图<br>
                 所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a><br>
             </p>

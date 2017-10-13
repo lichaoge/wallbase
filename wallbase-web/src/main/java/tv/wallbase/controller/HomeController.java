@@ -35,7 +35,7 @@ public class HomeController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String displayIndex(Model model) {
-        Pageable pageable = new Pageable(1, 24);
+        Pageable pageable = new Pageable(1, 100);
         Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
         model.addAttribute("pages", pages);
         return "/index";

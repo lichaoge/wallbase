@@ -9,27 +9,18 @@
     <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15"/>
     <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
 <#include "includes/head.ftl"/>
-
-    <!--百度统计-->
-<#--<script>-->
-<#--var _hmt = _hmt || [];-->
-<#--(function () {-->
-<#--var hm = document.createElement("script");-->
-<#--hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";-->
-<#--var s = document.getElementsByTagName("script")[0];-->
-<#--s.parentNode.insertBefore(hm, s);-->
-<#--})();-->
-<#--</script>-->
 </head>
 <body>
 <#include "includes/header.ftl"/>
 <section class="vbox">
     <section class="w-f-md">
-        <section id="waterfall" class="scrollable">
+        <section id="waterfall-home" class="scrollable">
         <#list pages.content as wallpaper>
-            <a href="//img2.lockbur.com/${wallpaper.thumbUrl}">
-                <img src="//img2.lockbur.com/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
+        <div class="item">
+            <a href="//img.wallbase.tv/${wallpaper.thumbUrl}">
+                <img src="//img.wallbase.tv/${wallpaper.thumbUrl}?x-oss-process=style/thumb"/>
             </a>
+        </div>
         </#list>
         </section>
     </section>
@@ -40,11 +31,32 @@
 </body>
 <script>
     $(document).ready(function () {
-        $("#waterfall").infiniteScroll({
-            // options
-            path: '.pagination__next',
-            append: '.post',
-            history: false,
+        $("#waterfall-home").justifiedGallery({
+            rowHeight: 200,
+            lastRow: 'justify',
+            rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
+            margins: 3,
+            cssAnimation: true,
+            waitThumbnailsLoad: false,
+            randomize: false
+        }).on('jg.complete', function () {
+            $(this).find('.item>a').colorbox({
+                rel: 'gallery',
+                maxWidth: '80%',
+                maxHeight: '80%',
+                opacity: 0.8,
+                transition: 'elastic',
+                current: "当前图像 {current} 总共 {total}",
+                previous: "前一页",
+                next: "后一页",
+                close: "关闭",
+                xhrError: "此内容无法加载",
+                imgError: "此图片无法加载",
+                slideshowStart: "开始播放幻灯片",
+                slideshowStop: "停止播放幻灯片"
+            });
+        }).on('jg.resize', function () {
+            $('#waterfall-home').justifiedGallery('norewind');
         });
     });
 </script>

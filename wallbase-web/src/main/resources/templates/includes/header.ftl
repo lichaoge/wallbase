@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <div>
+                    <div class="hide">
                         <ul class="nav navbar-nav">
                             <li>
                                 <a class="discover" href="/top" title="Discover">
