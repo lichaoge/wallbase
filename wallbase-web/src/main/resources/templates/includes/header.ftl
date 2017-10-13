@@ -13,7 +13,7 @@
                     </button>
                     <a class="navbar-brand" href="/">
                         <img src="/images/logo.png">
-                        <strong class="text-white">wallbase</strong>
+                        <strong class="text-white">Best Times For You</strong>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">

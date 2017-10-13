@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,10 +35,22 @@ public class HomeController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String displayIndex(Model model) {
+    public String displayIndex(Model model, Device device) {
         Pageable pageable = new Pageable(1, 100);
         Page<Wallpaper> pages = wallpaperService.findByPage(pageable);
         model.addAttribute("pages", pages);
+
+        String deviceType = "unknown";
+        if (device.isNormal()) {
+            deviceType = "normal";
+        } else if (device.isMobile()) {
+            deviceType = "mobile";
+            return "/mobile/index";
+        } else if (device.isTablet()) {
+            deviceType = "tablet";
+            return "/tablet/index";
+        }
+        logger.info("deviceType is {}", deviceType);
         return "/index";
     }
 }
