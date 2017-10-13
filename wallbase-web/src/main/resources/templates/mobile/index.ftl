@@ -27,7 +27,7 @@
 <script>
     $(document).ready(function () {
         $("#waterfall-home").justifiedGallery({
-            rowHeight: 90,
+            rowHeight: 120,
             lastRow: 'justify',
             rel: 'gallery', //replace with 'gallery1' the rel attribute of each link
             margins: 3,
