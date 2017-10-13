@@ -38,7 +38,7 @@
             margins: 3,
             cssAnimation: true,
             waitThumbnailsLoad: false,
-            randomize: false
+            randomize: true
         }).on('jg.complete', function () {
             $(this).find('.item>a').colorbox({
                 rel: 'gallery',
