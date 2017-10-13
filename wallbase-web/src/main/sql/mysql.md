@@ -75,3 +75,17 @@ CREATE TABLE `tb_sequence` (
 ```sql
 ALTER TABLE tb_wallpaper ADD COLUMN deleted TINYINT (4) DEFAULT '0' COMMENT '删除标记' AFTER STATUS;
 ```
+
+## 删除标志（create time 2017-10-13）
+```sql
+CREATE TABLE `tb_account` (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识',
+  username` varchar(100) NOT NULL COMMENT '网站名称',
+  password varchar(255) NOT NULL,
+  register_ip varchar(255) DEFAULT NULL,
+  `status` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB COMMENT='用户账户信息'
+```
