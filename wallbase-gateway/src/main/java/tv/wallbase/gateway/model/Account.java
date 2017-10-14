@@ -71,13 +71,13 @@ public class Account implements Serializable {
     @Length(max = 120)
     private String avatar;
 
-    /**
-     * 会员头像文件名
-     */
-    @Setter
-    @Getter
-    @Length(max = 10)
-    private String avatarType;
+//    /**
+//     * 会员头像文件名
+//     */
+//    @Setter
+//    @Getter
+//    @Length(max = 10)
+//    private String avatarType;
 
     /**
      * 是否启用
@@ -107,13 +107,6 @@ public class Account implements Serializable {
     @Setter
     @Getter
     private Date lockedDate;
-
-    /**
-     * 注册IP
-     */
-    @Setter
-    @Getter
-    private String registerIp;
 
     /**
      * 最后登录IP
