@@ -76,16 +76,25 @@ CREATE TABLE `tb_sequence` (
 ALTER TABLE tb_wallpaper ADD COLUMN deleted TINYINT (4) DEFAULT '0' COMMENT '删除标记' AFTER STATUS;
 ```
 
-## 删除标志（create time 2017-10-13）
+## 创建用户账户表（create time 2017-10-13）
 ```sql
 CREATE TABLE `tb_account` (
-  id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识',
-  username` varchar(100) NOT NULL COMMENT '网站名称',
-  password varchar(255) NOT NULL,
-  register_ip varchar(255) DEFAULT NULL,
-  `status` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB COMMENT='用户账户信息'
+	id INT (11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识',
+	username VARCHAR (100) NOT NULL COMMENT '登录用户名',
+	avatar VARCHAR (120) NOT NULL COMMENT '用户头像地址URL',
+	mobile VARCHAR (200) DEFAULT NULL COMMENT '登录手机号',
+	email VARCHAR (200) NOT NULL COMMENT '邮箱账号',
+	PASSWORD VARCHAR (255) NOT NULL COMMENT '登录密码',
+	salt VARCHAR (255) DEFAULT NULL COMMENT '混合加密盐值',
+	enabled TINYINT (1) NOT NULL COMMENT '是否可以登录',
+	locked TINYINT (1) NOT NULL COMMENT '是否被锁定',
+	locked_date DATETIME DEFAULT NULL COMMENT '被锁定时间',
+	login_date DATETIME DEFAULT NULL COMMENT '最后登录日期',
+	login_failure_count INT (11) NOT NULL COMMENT '登录错误次数',
+	login_ip VARCHAR (255) DEFAULT NULL COMMENT '最后登录IP',
+	STATUS VARCHAR (50) DEFAULT NULL,
+	create_time DATETIME NOT NULL COMMENT '创建时间',
+	update_time DATETIME NOT NULL COMMENT '最后一次更新时间',
+	PRIMARY KEY (`id`)
+) ENGINE = INNODB COMMENT = '用户账户信息'
 ```

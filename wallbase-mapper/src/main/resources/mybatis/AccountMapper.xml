@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tv.wallbase.mapper.AccountMapper">
+
+
+    <insert id="insert" parameterType="Account" keyProperty="id" useGeneratedKeys="true">
+        insert into tb_tag
+        (
+        username, avatar, mobile,email,password,salt,
+        enabled,locked,locked_date,login_date,login_failure_count,login_ip
+        status,create_time,update_time
+        )
+        values (
+        #{username},#{avatar},#{mobile},#{email},#{password},#{salt},
+        #{enabled},#{locked},#{locked_date},#{login_date},#{login_failure_count},#{login_ip},
+        #{status},now(), now()
+        )
+    </insert>
+
+    <sql id="Base_Column_List">
+        id, username, avatar, mobile,email,password,salt,
+        enabled,locked,locked_date,login_date,login_failure_count,login_ip
+        status,create_time,update_time
+    </sql>
+
+    <select id="findById" resultType="Account">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_account
+        where id = #{id}
+    </select>
+
+    <select id="findByUsername" resultType="Account">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_account
+        where username = #{username}
+    </select>
+
+    <select id="findByEmail" resultType="Account">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_account
+        where email = #{email}
+    </select>
+
+</mapper>
