@@ -28,4 +28,10 @@ public class AccountMapperTest {
         Account account = accountMapper.findById(1);
         logger.info("account : {}", account);
     }
+
+    @Test
+    public void findByEmail() {
+        Account account = accountMapper.findByEmail("845885222@qq.com");
+        logger.info("account : {}", account);
+    }
 }
